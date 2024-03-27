@@ -1,5 +1,6 @@
 package e2e.pages;
 
+import e2e.wait.Wait;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
