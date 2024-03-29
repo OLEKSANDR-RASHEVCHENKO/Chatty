@@ -20,7 +20,11 @@ public void userCanCreatePost() {
         String email = "tatyanaskv@rambler.ru";
         String password = "123456Start";
 
-        String titleInput = faker.internet().uuid();
+        String title = faker.internet().uuid();
+        String description = faker.internet().uuid();
+        String textarea = faker.lorem().sentence();
+        String image = "Cat.jpeg";
+        String imageInput ="//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']";
 
         loginPage = new LoginPage(app.driver);
         loginPage.waitForLoading();
@@ -30,7 +34,18 @@ public void userCanCreatePost() {
         homeblogPage.waitForLoading();
         homeblogPage.openCreatePostPage();
 
-        addPostPage.waitForOpen();
+        addPostPage = new AddPostPage(app.driver);
+        addPostPage.waitForLoading();
+        addPostPage.setTitleInput(title);
+        addPostPage.setDescriptionInput(description);
+        addPostPage.setTextareaInput(textarea);
+        addPostPage.getImage(imageInput);
+        //addPostPage.downloadImage();
+        addPostPage.setImageInput(image);
+        addPostPage.waitForLoading();
+        addPostPage.savePost();
+
+
     }
 
 

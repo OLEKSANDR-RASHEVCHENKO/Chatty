@@ -1,9 +1,12 @@
 package e2e.pages;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.awt.*;
 
 public class AddPostPage extends HomeblogPage{
     public AddPostPage(WebDriver driver) {
@@ -19,32 +22,54 @@ public class AddPostPage extends HomeblogPage{
     @FindBy(xpath = "//*[@data-test='textarea']")
     WebElement textareaInput;
 
-    @FindBy(xpath = "//*[@class='post_uploaded_image__7qSWV']")
+    @FindBy(xpath = "//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']")
     WebElement imageInput;
 
     @FindBy(xpath = "//*[@id='publishDate']")
     WebElement publishDateButton;
 
-    @FindBy(xpath = "//*[@data-test='checkbox']")
+    @FindBy(xpath = "//*[@for='draftCheckbox']")
     WebElement draftButton;
 
     @FindBy(xpath = "//*[@data-test='submit']")
     WebElement submitButton;
 
     @Step("Create post as a user")
-    public void waitForOpen() {
+    public void waitForLoading() {
         getWait().forVisibility(titleInput);
         getWait().forVisibility(descriptionInput);
         getWait().forVisibility(textareaInput);
-        getWait().forVisibility(imageInput);
-        getWait().forClickable(publishDateButton);
-        getWait().forClickable(draftButton);
+        //getWait().forVisibility(imageInput);
+        getWait().forVisibility(publishDateButton);
+        getWait().forVisibility(draftButton);
         getWait().forClickable(submitButton);
     }
 
-    public void setTitleInput() {
-        titleInput.sendKeys(titleInput.getText());
-
+    public void setTitleInput(String title) {
+        titleInput.sendKeys(title);
+    }
+    public void setDescriptionInput(String description) {
+        descriptionInput.sendKeys(description);
+    }
+    public void setTextareaInput(String textarea) {
+        textareaInput.sendKeys(textarea);
+    }
+    public int getImage(String imageInput){
+       return driver.findElements(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']")).size();
 
     }
+    public void setImageInput(String image){
+        imageInput.sendKeys("/Users/Tanya/Desktop");
+
+    }
+    public void downloadImage(){
+        imageInput.click();
+
+    }
+
+
+    public void savePost(){
+        submitButton.click();
+    }
+
 }

@@ -35,7 +35,6 @@ public void takeLoginPageScreenShot(String actualScreenShotName){
         emailInput.sendKeys(email);
         passwordInput.sendKeys(password);
         loginButton.click();
-
-
 }
+
 }

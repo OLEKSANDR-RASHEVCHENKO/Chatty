@@ -20,7 +20,7 @@ public class ApplicationManager {
     protected void init(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.get("http://chatty.telran-edu.de:8089/login");
+        driver.get("http://chatty.telran-edu.de:8089/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
