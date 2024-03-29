@@ -83,6 +83,7 @@ public class BasePage {
     public byte[]saveScreenshot(byte[]screenshot){
         return screenshot;//этот метод аттачмент прям в алюр
     }
+
     @Step("Take and compare screenshot{actualScreenshotName}")
     protected void takeAndCompareScreenshot(String actualScreenshotName, WebElement element){
         String referenceImageFilePath = "reference/" + actualScreenshotName + ".png";

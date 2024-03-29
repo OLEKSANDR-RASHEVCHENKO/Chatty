@@ -9,6 +9,7 @@ public class AddPostPage extends HomeblogPage{
     public AddPostPage(WebDriver driver) {
         super(driver);
     }
+
     @FindBy(xpath = "//*[@data-test='title-input']")
     WebElement titleInput;
 
@@ -42,7 +43,7 @@ public class AddPostPage extends HomeblogPage{
     }
 
     public void setTitleInput() {
-        setTitleInput();
+        titleInput.sendKeys(titleInput.getText());
 
 
     }
