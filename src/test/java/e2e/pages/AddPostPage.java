@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.awt.*;
-
 public class AddPostPage extends HomeblogPage{
     public AddPostPage(WebDriver driver) {
         super(driver);
@@ -39,7 +37,7 @@ public class AddPostPage extends HomeblogPage{
         getWait().forVisibility(titleInput);
         getWait().forVisibility(descriptionInput);
         getWait().forVisibility(textareaInput);
-        //getWait().forVisibility(imageInput);
+        //getWait().forClickable(imageInput);
         getWait().forVisibility(publishDateButton);
         getWait().forVisibility(draftButton);
         getWait().forClickable(submitButton);
@@ -54,20 +52,13 @@ public class AddPostPage extends HomeblogPage{
     public void setTextareaInput(String textarea) {
         textareaInput.sendKeys(textarea);
     }
-    public int getImage(String imageInput){
-       return driver.findElements(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']")).size();
 
+    public void getImage(String imageInput){
+       driver.findElements(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
     }
     public void setImageInput(String image){
-        imageInput.sendKeys("/Users/Tanya/Desktop");
-
+        imageInput.sendKeys("/Users/Tanya/Desktop/Cat.jpeg");
     }
-    public void downloadImage(){
-        imageInput.click();
-
-    }
-
-
     public void savePost(){
         submitButton.click();
     }

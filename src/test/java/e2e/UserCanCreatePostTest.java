@@ -23,8 +23,8 @@ public void userCanCreatePost() {
         String title = faker.internet().uuid();
         String description = faker.internet().uuid();
         String textarea = faker.lorem().sentence();
-        String image = "Cat.jpeg";
-        String imageInput ="//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']";
+        String image = "Image Path";
+        String imageInput = "Place to download";
 
         loginPage = new LoginPage(app.driver);
         loginPage.waitForLoading();
@@ -39,11 +39,18 @@ public void userCanCreatePost() {
         addPostPage.setTitleInput(title);
         addPostPage.setDescriptionInput(description);
         addPostPage.setTextareaInput(textarea);
+
+
         addPostPage.getImage(imageInput);
+        //Assert.assertEquals(getImage, 1, "Contact count row after filter should be 1");
         //addPostPage.downloadImage();
+        //addPostPage.getImage(imageInput);
+
         addPostPage.setImageInput(image);
         addPostPage.waitForLoading();
         addPostPage.savePost();
+
+
 
 
     }
