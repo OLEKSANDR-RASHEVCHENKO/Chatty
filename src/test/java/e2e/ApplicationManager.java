@@ -1,3 +1,5 @@
+package e2e;
+
 import config.Config;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
