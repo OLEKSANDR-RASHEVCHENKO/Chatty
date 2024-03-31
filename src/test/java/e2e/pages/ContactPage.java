@@ -1,5 +1,6 @@
 package e2e.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,11 +25,12 @@ public class ContactPage extends BasePage {
     WebElement invalidEmail;
     @FindBy(xpath = "//*[@class='success-message']")
     WebElement successfullyMassage;
-
+    @Step("Waite for loading Contact page")
     public void waiteForLoading(){
         getWait().forVisibility(header);
         Assert.assertTrue(header.isDisplayed());
     }
+    @Step("Send Massage:{name},{email},{content}")
     public void sendMessage(String name,String email,String content){
         nameInput.sendKeys(name);
         emailInput.sendKeys(email);
@@ -38,10 +40,12 @@ public class ContactPage extends BasePage {
     public void takeLoginPageScreenshot(String actualScreenshotName){
         takeAndCompareScreenshot(actualScreenshotName, null);
     }
+    @Step("Waite for invalid Massage")
     public void waiteForInvalidMassage(){
         getWait().forVisibility(invalidEmail);
         Assert.assertTrue(invalidEmail.isDisplayed());
     }
+    @Step("Wait for successfully Message")
     public void waiteForSuccessfullyMassage(){
         getWait().forVisibility(successfullyMassage);
         Assert.assertTrue(successfullyMassage.isDisplayed());

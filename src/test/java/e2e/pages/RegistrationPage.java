@@ -1,5 +1,6 @@
 package e2e.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,11 +27,12 @@ public class RegistrationPage extends BasePage{
     WebElement user;
     @FindBy(xpath = "//*[@value='admin']")
     WebElement admin;
-
+    @Step("Wait for loading registration Page")
     public void waiteForLoading(){
         getWait().forVisibility(header);
         Assert.assertTrue(header.isDisplayed());
     }
+    @Step("Registration as user :{email},{password},{confirmPassword}")
     public void registrationAsUser(String email,String password,String confirmPassword){
         emailInput.sendKeys(email);
         passwordInput.sendKeys(password);
@@ -38,6 +40,7 @@ public class RegistrationPage extends BasePage{
         user.click();
         submitButton.click();
     }
+    @Step("Registration as admin :{email},{password},{confirmPassword}")
     public void registrationAsAdmin(String email,String password,String confirmPassword){
         emailInput.sendKeys(email);
         passwordInput.sendKeys(password);

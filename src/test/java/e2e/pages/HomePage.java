@@ -2,6 +2,7 @@ package e2e.pages;
 
 import e2e.enums.DropDownMenu;
 import e2e.enums.Header_menu;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -58,12 +59,13 @@ public class HomePage extends BasePage{
 
     @FindBy(xpath = "//*[@data-test='posts-component']//*[@class='container']")
     WebElement containerInMyPosts;
+    @Step("Waite for Post")
     public void waiteForPosts(){
         Assert.assertTrue(postsComponent.isDisplayed());
     }
 
 
-
+    @Step("Load post:{title},{description},{area}")
     public void loadPost(String title,String description,String area,String filePath,String data){
         titleInput.sendKeys(title);
         descriptionInput.sendKeys(description);
@@ -75,6 +77,7 @@ public class HomePage extends BasePage{
         getWait().forVisibility(calendar);
         submitButton.click();
     }
+    @Step("Load post as draft:{title},{description},{area}")
     public void loadPostAsDraft(String title,String description,String area,String filePath,String data){
         titleInput.sendKeys(title);
         descriptionInput.sendKeys(description);
@@ -92,19 +95,23 @@ public class HomePage extends BasePage{
         WebElement fileInput = driver.findElement(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
         fileInput.sendKeys(filePath);
     }
+    @Step("Get title from Post")
     public String getTitleFromCreatedPost(String titleName){
         String createdPost = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='"+titleName+"']")).getText();
         return createdPost;
-    }// выводи имя поста через поиск по локатору
+    }
+    @Step("Click on created Post")
     public void clickOnCreatedPost(String titleName){
         WebElement createdPost = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='"+titleName+"']"));
         createdPost.click();
-    }// ищем и нажммаем на созданый пост
+    }
+@Step("check if Post was deleted")
     public boolean isPostPresent(String title){
         List<WebElement> posts = driver.findElements(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='"+title+"']"));
         return !posts.isEmpty();
-    }  // проверка есть ли пост
+    }
 
+@Step("Get user name from Home page")
     public String getUserNameFromHomePage(){
         String userNameUnderImage = nameUnderImage.getText();
         return  userNameUnderImage;

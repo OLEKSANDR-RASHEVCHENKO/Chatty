@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="testLogging" verbose="1">
+    <test name="testLogging">
+        <classes>
+            <class name="e2e.test.UserCanLoginTest">
+            </class>
+        </classes>
+    </test>
+</suite>

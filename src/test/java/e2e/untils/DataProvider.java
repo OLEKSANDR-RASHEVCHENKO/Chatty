@@ -1,4 +1,4 @@
-package untils;
+package e2e.untils;
 
 import com.github.javafaker.Faker;
 

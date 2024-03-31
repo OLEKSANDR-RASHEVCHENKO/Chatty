@@ -1,3 +1,5 @@
+package e2e;
+
 import config.Config;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
@@ -15,7 +17,7 @@ public class ApplicationManager {
     private final Config config = new Config();
     public WebDriver driver;
 
-    protected void init() {
+    public void init() {
         if (config.getSelenoidState()) {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName("chrome");
@@ -43,7 +45,7 @@ public class ApplicationManager {
 
     }
 
-    protected void stop() {
+    public void stop() {
         driver.quit();
     }
 }

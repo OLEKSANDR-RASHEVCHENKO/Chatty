@@ -1,5 +1,6 @@
 package e2e.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,6 +36,7 @@ public class PostPage extends BasePage{
     WebElement submitButton;
     @FindBy(xpath = "//*[@id='publishDate']")
     WebElement calendar;
+    @Step("Wait for Post page")
     public void waitForLoading(){
         getWait().forVisibility(post);
         getWait().forVisibility(editButton);
@@ -44,7 +46,7 @@ public class PostPage extends BasePage{
         Assert.assertTrue(deleteButton.isDisplayed());
     }
 
-
+    @Step("Update  post:{title},{description},{textArea}")
     public void editePost(String title,String description,String textArea,String path){
         editButton.click();
         getWait().forVisibility(postDescription);
@@ -57,13 +59,13 @@ public class PostPage extends BasePage{
         Assert.assertTrue(uploadedImages.isDisplayed());
         submitButton.click();
     }
-
+@Step("Delete post")
     public void deletePost(){
         deleteButton.click();
     }
 
 
-
+@Step("Upload Photo")
     public void uploadPhoto(String filePath) {
         WebElement fileInput = driver.findElement(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
         fileInput.sendKeys(filePath);
