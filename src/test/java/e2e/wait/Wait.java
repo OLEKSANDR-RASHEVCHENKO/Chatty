@@ -52,4 +52,11 @@ public class Wait {
             throw new TimeoutException(element.getAccessibleName() + " is not clickable more than " + TIMEOUT.toString());
         }
     }
+    public void forInClickable(WebElement element){
+        try {
+            setWait().until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(element)));
+        } catch (TimeoutException e){
+            throw new TimeoutException(element.getAccessibleName() + " is not clickable more than " + TIMEOUT.toString());
+        }
+    }
 }
