@@ -1,4 +1,12 @@
 package e2e.pages;
 
-public class AboutPage {
+import org.openqa.selenium.WebDriver;
+
+public class AboutPage extends BasePage{
+    public AboutPage(WebDriver driver) {
+        super(driver);
+    }
+
+
+
 }
