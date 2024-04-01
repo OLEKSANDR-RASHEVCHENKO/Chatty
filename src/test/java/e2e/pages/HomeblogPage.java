@@ -22,6 +22,15 @@ public class HomeblogPage extends BasePage {
     @FindBy(xpath = "//*[@alt='Drafts']")
     WebElement myDraftsButton;
 
+    @FindBy(xpath = "//*[@class='post-content__top']")
+    WebElement postTitle;
+
+    @FindBy(xpath = "//*[@class='post__description']")
+    WebElement postDescription;
+
+    @FindBy(xpath = "//*[@data-test='post']")
+    WebElement post;
+
 
     @Step("Wait for loading homeblog page")
     public void waitForLoading() {
@@ -41,6 +50,18 @@ public class HomeblogPage extends BasePage {
         myDraftsButton.click();
     }
 
+//    public String getPostTitle() {
+//    return postTitle.getText();
+//    }
+//    public String getPostDescription() {
+//        return postDescription.getText();
+//    }
+    public void clickMyPostsButton(){
+        myPostsButton.click();
+    }
 
+    public void clickOnPost(){
+        post.click();
+    }
 }
 

@@ -2,15 +2,18 @@ package e2e;
 
 import com.github.javafaker.Faker;
 import e2e.pages.AddPostPage;
+import e2e.pages.EditDeletePostPage;
 import e2e.pages.HomeblogPage;
 import e2e.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class UserCanCreatePostTest extends BaseTest {
+public class UserCanEditPostTest extends BaseTest{
+
     LoginPage loginPage;
     HomeblogPage homeblogPage;
     AddPostPage addPostPage;
+    EditDeletePostPage editDeletePostPage;
 
 
     Faker faker = new Faker();
@@ -24,7 +27,7 @@ public class UserCanCreatePostTest extends BaseTest {
 
 
     @Test()
-public void userCanCreatePost() {
+    public void userCanCreatePost() {
         String email = "tatyanaskv@rambler.ru";
         String password = "123456Start";
 
@@ -33,6 +36,11 @@ public void userCanCreatePost() {
         String textarea = faker.lorem().sentence();
         String image = "Image Path";
         String imageInput = "Place to download";
+
+        String editTitle = "Cat";
+        String editDescription = "This is my Cat";
+        String editTextarea = "It is very cute";
+        String editImageInput = "New cat";
 
         loginPage = new LoginPage(app.driver);
         loginPage.waitForLoading();
@@ -57,14 +65,27 @@ public void userCanCreatePost() {
 
         homeblogPage = new HomeblogPage(app.driver);
         homeblogPage.waitForLoading();
-        checkIfPostCreated(title, description);
+        //checkIfPostCreated(title, description);
+        homeblogPage.clickMyPostsButton();
+        homeblogPage.waitForLoading();
+        homeblogPage.clickOnPost();
+
+        editDeletePostPage = new EditDeletePostPage(app.driver);
+        editDeletePostPage.waitForLoading();
+        editDeletePostPage.clickEditButton();
+        editDeletePostPage.setEditTitle(editTitle);
+        editDeletePostPage.setEditDescription(editDescription);
+        editDeletePostPage.setEditTextarea(editTextarea);
+        editDeletePostPage.getEditImage(imageInput);
+        editDeletePostPage.setEditImageInput(editImageInput);
+        editDeletePostPage.clickEditButton();
+
+
 
 
 
 
 
     }
-
-
 
 }
