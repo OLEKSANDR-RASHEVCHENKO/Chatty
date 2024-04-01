@@ -14,6 +14,12 @@ public class UserCanCreatePostTest extends BaseTest {
 
     Faker faker = new Faker();
 
+    public void checkIfPostCreated(){
+        String actualTitle = page.ge
+    }
+
+
+
 
     @Test()
 public void userCanCreatePost() {

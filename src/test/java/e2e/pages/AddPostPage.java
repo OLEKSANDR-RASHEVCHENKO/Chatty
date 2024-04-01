@@ -55,6 +55,10 @@ public class AddPostPage extends HomeblogPage{
         textareaInput.sendKeys(textarea);
     }
 
+//    public void getTitle(String title){
+//        driver
+//    }
+
     public void getImage(String imageInput){
        driver.findElements(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
     }
