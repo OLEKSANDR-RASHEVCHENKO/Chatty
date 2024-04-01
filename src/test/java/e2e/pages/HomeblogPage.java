@@ -16,10 +16,18 @@ public class HomeblogPage extends BasePage {
     @FindBy(xpath = "//*[@data-test='post-header__plus']")
     WebElement plusButton;
 
+    @FindBy(xpath = "//*[@for='myPostsId']")
+    WebElement myPostsButton;
+
+    @FindBy(xpath = "//*[@alt='Drafts']")
+    WebElement myDraftsButton;
+
 
     @Step("Wait for loading homeblog page")
     public void waitForLoading() {
         getWait().forVisibility(logo);
+        getWait().forVisibility(myDraftsButton);
+        //getWait().forVisibility(myPostsButton);
     }
 
     @Step("Open create post page")
@@ -27,6 +35,10 @@ public class HomeblogPage extends BasePage {
         getWait().forVisibility(plusButton);
         getWait().forClickable(plusButton);
         plusButton.click();
+    }
+    @Step("Open my drafts")
+    public void openMyDrafts(){
+        myDraftsButton.click();
     }
 
 

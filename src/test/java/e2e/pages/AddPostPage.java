@@ -46,9 +46,11 @@ public class AddPostPage extends HomeblogPage{
     public void setTitleInput(String title) {
         titleInput.sendKeys(title);
     }
+
     public void setDescriptionInput(String description) {
         descriptionInput.sendKeys(description);
     }
+
     public void setTextareaInput(String textarea) {
         textareaInput.sendKeys(textarea);
     }
@@ -59,8 +61,18 @@ public class AddPostPage extends HomeblogPage{
     public void setImageInput(String image){
         imageInput.sendKeys("/Users/Tanya/Desktop/Cat.jpeg");
     }
+
+    @Step("Save post as a draft")
+    public void savePostAsDraft(){
+        draftButton.click();
+    }
+
     public void savePost(){
         submitButton.click();
     }
+
+
+
+
 
 }
