@@ -34,8 +34,10 @@ public class UserCanCreateEditDeletePostTest extends TestBase {
         String editedDescription = faker.book().title();
         String editedTextArea = faker.lorem().paragraph();
         String editedFilePath = "C:\\Users\\Oleksandr\\OneDrive\\Рабочий стол\\1583662555_17.jpg";
+
         loginPage = new LoginPage(app.driver);
         loginPage.loginInSystem(email, password);
+
         homePage = new HomePage(app.driver);
         homePage.waiteForVisibility();
         homePage.hoverOverElement(app.driver);
@@ -47,6 +49,7 @@ public class UserCanCreateEditDeletePostTest extends TestBase {
         String titleName = homePage.getTitleFromCreatedPost(title);
         Assert.assertEquals(title, titleName);
         homePage.clickOnCreatedPost(title);
+
         postPage = new PostPage(app.driver);
         postPage.waitForLoading();
         postPage.editePost(editedTitle, editedDescription, editedTextArea, editedFilePath);
