@@ -20,10 +20,10 @@ public class AdminCanDeleteUserTest extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @Test(description = "User Can Login")
     public void adminCanDeleteUser(){
-        String email = "rashfefff@gmail.com";
+        String email = "rashfefffdd@gmail.com";
         String password = "Gazmanov1234";
         String confirmPassword = "Gazmanov1234";
-        String emailAsAdmin = "rasehffffAdmin@gmail.com";
+        String emailAsAdmin = "rasehfffffdAdmin@gmail.com";
         String passwordAsAdmin = "Gazmanov1234";
         String confirmPasswordAsAdmin = "Gazmanov1234";
         loginPage=new LoginPage(app.driver);
