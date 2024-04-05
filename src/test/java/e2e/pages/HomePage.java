@@ -59,6 +59,21 @@ public class HomePage extends BasePage{
 
     @FindBy(xpath = "//*[@data-test='posts-component']//*[@class='container']")
     WebElement containerInMyPosts;
+
+    @FindBy(xpath = "//*[@class='form-group'][1]//*[@class='error']")
+    WebElement titleErrorMassage;
+    @FindBy(xpath = "//p[@class='error' and text()='Please fill all fields'][last()]")
+    WebElement errorMassage;
+
+    public void titleError(){
+        getWait().forVisibility(titleErrorMassage);
+        Assert.assertTrue(titleErrorMassage.isDisplayed());
+    }
+    public void errorMassage(){
+        getWait().forVisibility(errorMassage);
+        Assert.assertTrue(errorMassage.isDisplayed());
+    }
+
     @Step("Waite for Post")
     public void waiteForPosts(){
         Assert.assertTrue(postsComponent.isDisplayed());

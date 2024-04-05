@@ -36,6 +36,9 @@ public class PostPage extends BasePage{
     WebElement submitButton;
     @FindBy(xpath = "//*[@id='publishDate']")
     WebElement calendar;
+
+
+
     @Step("Wait for Post page")
     public void waitForLoading(){
         getWait().forVisibility(post);
