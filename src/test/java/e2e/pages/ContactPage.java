@@ -27,7 +27,6 @@ public class ContactPage extends BasePage{
         getWait().forVisibility(sendMessageButton);}
 
 
-
     public void sendFeedback(String name, String email,String message){
         nameInput.sendKeys(name);
         emailInput.sendKeys(email);
