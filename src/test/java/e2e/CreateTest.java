@@ -79,6 +79,8 @@ public class CreateTest extends BaseTest {
     }
 
 
+
+
 //        homeblogPage.clickMyPostsButton();
 //        homeblogPage.waitForLoading();
 
