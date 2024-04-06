@@ -56,9 +56,7 @@ public void userCanCreatePost() {
         homeblogPage.setTitleInput(title);
         homeblogPage.setDescriptionInput(description);
         homeblogPage.setTextareaInput(textarea);
-
-
-        homeblogPage.getImage(imageInput);
+        //homeblogPage.getImage(imageInput);
         homeblogPage.setImageInput(image);
         homeblogPage.waitForLoading();
         homeblogPage.savePost();

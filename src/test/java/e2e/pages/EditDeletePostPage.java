@@ -43,10 +43,7 @@ public class EditDeletePostPage extends BasePage{
         getWait().forVisibility(deleteButton);
     }
 
-//    driver.findElement(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));public void clickEditButton(){
-//        editButton.click();
-//    }
-
+    @Step("Edit post")
     public void editPost(String editTitleInput, String editDescriptionInput, String editTextareaInput,String editImagePath){
         editButton.click();
         getWait().forVisibility(editTitle);
@@ -59,23 +56,34 @@ public class EditDeletePostPage extends BasePage{
         downloadImage(editImagePath);
         getWait().forVisibility(editImage);
         editSubmitButton.click();
-
-
     }
+
+    @Step("Edit image")
     public void downloadImage(String imagePath) {
-    WebElement imageInput = driver.findElement(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
-    imageInput.sendKeys(imagePath);
+        WebElement imageInput = driver.findElement(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
+        imageInput.sendKeys(imagePath);
     }
-
-    public String getPostEditTitle(String editTitle){
-        String editedPost = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='" + editTitle +"']")).getText();
+    @Step("Find edited post by title")
+    public String getPostEditTitle(String editedTitle){
+        String editedPost = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='" + editedTitle +"']")).getText();
         return editedPost;
     }
 
+    @Step("Delete post")
     public void deletePost(){
         deleteButton.click();
     }
 
+
+
+
+
+
+
+
+//    driver.findElement(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));public void clickEditButton(){
+//        editButton.click();
+//    }
 
 
 

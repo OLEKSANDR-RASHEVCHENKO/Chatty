@@ -55,6 +55,9 @@ public class HomeblogPage extends BasePage {
     @FindBy(xpath = "//*[@for='draftCheckbox']")
     WebElement draftButton;
 
+    @FindBy(xpath = "//*[@src='/UserProfile/draft1.svg']")
+    WebElement myDrafts;
+
     @FindBy(xpath = "//*[@data-test='submit']")
     WebElement submitButton;
 
@@ -66,22 +69,10 @@ public class HomeblogPage extends BasePage {
         //getWait().forVisibility(titleInput);
         //getWait().forVisibility(descriptionInput);
         //getWait().forVisibility(textareaInput);
-        //getWait().forClickable(imageInput);
+        //getWait().forVisibility(imageInput);
         //getWait().forVisibility(publishDateButton);
         //getWait().forVisibility(draftButton);
         //getWait().forClickable(submitButton);
-    }
-    public void createPost(String title, String description, String textarea,String image){
-
-        getWait().forVisibility(postTitle);
-        titleInput.sendKeys(title);
-        descriptionInput.sendKeys(description);
-        textareaInput.sendKeys(textarea);
-        downloadPhoto(image);
-        getWait().forVisibility(imageInput);
-        submitButton.click();
-
-
     }
 
     @Step("Open create post page")
@@ -90,43 +81,77 @@ public class HomeblogPage extends BasePage {
         getWait().forClickable(plusButton);
         plusButton.click();
     }
-    @Step("Open my drafts")
-    public void openMyDrafts(){
-        myDraftsButton.click();
+    @Step("Fill title field")
+    public void setTitleInput(String title) {
+        titleInput.sendKeys(title);
+    }
+    @Step("Fill description field")
+    public void setDescriptionInput(String description) {
+        descriptionInput.sendKeys(description);
+    }
+    @Step("Fill textarea field")
+    public void setTextareaInput(String textarea) {
+        textareaInput.sendKeys(textarea);
     }
 
+    @Step("Download image")
+    public void downloadPhoto(String imagePath) {
+        WebElement imageInput = driver.findElement(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
+        imageInput.sendKeys(imagePath);
+    }
+    public void setImageInput(String image){
+        imageInput.sendKeys(image);
+    }
+    @Step("Save Post")
+    public void savePost(){
+        submitButton.click();
+    }
+
+    @Step("All user`s Posts")
     public void clickMyPostsButton(){
         myPostsButton.click();
+        getWait().forVisibility(myDrafts);//
     }
-
-//    public void clickOnPost(){
-//        post.click();
-//    }
-
+    @Step("Find post by title")
     public String getPostTitle(String title){
         String createdPost = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='" + title +"']")).getText();
         return createdPost;
     }
-
-    public void clickLogo(){
-        logo.click();
-    }
+    @Step("Click on created post")
     public void clickOnPost(String title){
         WebElement createdPost = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='" + title +"']"));
         createdPost.click();
     }
 
-    public void setTitleInput(String title) {
-        titleInput.sendKeys(title);
+    @Step("Go on homeblog page")
+    public void clickLogo(){
+        logo.click();
     }
 
-    public void setDescriptionInput(String description) {
-        descriptionInput.sendKeys(description);
-    }
 
-    public void setTextareaInput(String textarea) {
-        //textareaInput.sendKeys(textarea);
-    }
+
+
+
+
+
+
+
+
+
+
+//    @Step("Open my drafts")
+//    public void openMyDrafts(){
+//        myDraftsButton.click();
+//    }
+
+
+
+//    public void clickOnPost(){
+//        post.click();
+//    }
+
+
+
 
 //    public String getTitle() {
 //        return titleInput.getText();
@@ -135,30 +160,21 @@ public class HomeblogPage extends BasePage {
 //        return descriptionInput.getText();
 //    }
 
-    public void getImage(String imageInput){
-        driver.findElements(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
-    }
-    public void setImageInput(String image){
-        imageInput.sendKeys("/Users/Tanya/Desktop/Cat2.jpeg");
-    }
+
 
 //    @Step("Save post as a draft")
 //    public void savePostAsDraft(){
 //        draftButton.click();
 //    }
 
-    public void savePost(){
-        submitButton.click();
-    }
-
 
 //    public boolean checkIfPostDeleted(String title){
-//        List<WebElement> post = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='" + title +"']"));
+//        LWebElement post = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='" + title +"']"));
 //        return !post.isEmpty();
 //    }
-public void downloadPhoto(String imagePath) {
-    WebElement imageInput = driver.findElement(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
-    imageInput.sendKeys(imagePath);
-}
+//public void getImage(String imageInput){
+//    driver.findElement(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
+//}
+
 }
 

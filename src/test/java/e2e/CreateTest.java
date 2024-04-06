@@ -10,19 +10,8 @@ import org.testng.annotations.Test;
 public class CreateTest extends BaseTest {
     LoginPage loginPage;
     HomeblogPage homeblogPage;
-    //AddPostPage addPostPage;
     EditDeletePostPage editDeletePostPage;
-
-
     Faker faker = new Faker();
-
-//    public void checkIfPostCreated(String title, String description1){
-//        String actualTitle = homeblogPage.getTitle();
-//        String actualDescription = homeblogPage.getDescription();
-//        Assert.assertEquals(actualTitle, title, actualTitle+ " is not equal " + title);
-//        Assert.assertEquals(actualDescription, description1, actualDescription+ " is not equal " + description1);
-//    }
-
 
     @Test()
     public void userCanCreatePost() {
@@ -34,13 +23,11 @@ public class CreateTest extends BaseTest {
         String description = faker.name().firstName();
         String textarea = faker.lorem().sentence();
         String image = "/Users/Tanya/Desktop/Cat.jpeg";
-        String imageInput = "Place to download";
 
         String editTitle = faker.name().firstName();
         String editDescription = faker.name().firstName();
         String editTextarea = faker.lorem().sentence();
         String editImage = "/Users/Tanya/Desktop/Cat2.jpeg";
-        String editImageInput = "Place to download";
 
         loginPage = new LoginPage(app.driver);
         loginPage.waitForLoading();
@@ -50,22 +37,16 @@ public class CreateTest extends BaseTest {
         homeblogPage.waitForLoading();
         homeblogPage.openCreatePostPage();
 
-        homeblogPage.createPost(title, description, textarea, image);
 
-        //addPostPage = new AddPostPage(app.driver);
-
-//        homeblogPage.waitForLoading();
-//        homeblogPage.setTitleInput(title);
-//        homeblogPage.setDescriptionInput(description);
-//        homeblogPage.setTextareaInput(textarea);
-
-
-//        homeblogPage.getImage(imageInput);
-//        homeblogPage.setImageInput(image);
-//        homeblogPage.waitForLoading();
-//        homeblogPage.savePost();
-
-        homeblogPage = new HomeblogPage(app.driver);
+        homeblogPage.waitForLoading();
+        homeblogPage.setTitleInput(title);
+        homeblogPage.setDescriptionInput(description);
+        homeblogPage.setTextareaInput(textarea);
+        //homeblogPage.getImage(imageInput);
+        homeblogPage.downloadPhoto(image);
+        homeblogPage.setImageInput(image);
+        homeblogPage.waitForLoading();
+        homeblogPage.savePost();
         homeblogPage.waitForLoading();
         homeblogPage.clickMyPostsButton();
         homeblogPage.waitForLoading();
@@ -73,35 +54,39 @@ public class CreateTest extends BaseTest {
         Assert.assertEquals(createdTitle, title);
         homeblogPage.clickOnPost(title);
 
+        editDeletePostPage = new EditDeletePostPage(app.driver);
+        editDeletePostPage.waitForLoading();
+        editDeletePostPage.editPost(editTitle, editDescription, editTextarea, editImage);
+        editDeletePostPage.waitForLoading();
+
+
+        homeblogPage = new HomeblogPage(app.driver);
+        homeblogPage.waitForLoading();
+        homeblogPage.clickLogo();
+        homeblogPage.clickMyPostsButton();
+        String editedTitle = editDeletePostPage.getPostEditTitle(editTitle);
+        Assert.assertEquals(editedTitle, editTitle);
+
+//        homeblogPage.clickMyPostsButton();
+//        homeblogPage.waitForLoading();
+
+
 //        editDeletePostPage = new EditDeletePostPage(app.driver);
-//        editDeletePostPage.waitForLoading();
-//        //editDeletePostPage.clickEditButton();
-//        editDeletePostPage.editPost(editTitle, editDescription, editTextarea, editImage);
-//        //editDeletePostPage.getEditImage(editImage);
-//        //editDeletePostPage.setEditImageInput(editImageInput);
-//        //editDeletePostPage.clickEditButton();
+//        editDeletePostPage.getPostEditTitle(editedTitle);
 //
 //        homeblogPage = new HomeblogPage(app.driver);
 //        homeblogPage.waitForLoading();
-//        homeblogPage = new HomeblogPage(app.driver);
-//        homeblogPage.clickLogo();
-//        homeblogPage.clickMyPostsButton();
-//        String editedTitle = editDeletePostPage.getPostEditTitle(editTitle);
-//        Assert.assertEquals(editedTitle, editTitle);
-//
-//        homeblogPage.clickMyPostsButton();
-//        homeblogPage.getPostTitle(editedTitle);
-//        homeblogPage.waitForLoading();
-//        homeblogPage.clickOnPost(title);
-//
-//
-//        //editDeletePostPage = new EditDeletePostPage(app.driver);
-//        editDeletePostPage.deletePost();
-//        homeblogPage = new HomeblogPage(app.driver);
-//        homeblogPage.waitForLoading();
-//        homeblogPage.clickMyPostsButton();
-//        homeblogPage.waitForLoading();
-////        Assert.assertFalse(homeblogPage.);
-//
+
+        homeblogPage.clickOnPost(editedTitle);
+
+
+        editDeletePostPage = new EditDeletePostPage(app.driver);//
+        editDeletePostPage.deletePost();
+        homeblogPage = new HomeblogPage(app.driver);
+        homeblogPage.waitForLoading();
+        homeblogPage.clickMyPostsButton();
+        homeblogPage.waitForLoading();
+        //Assert.assertFalse(homeblogPage.);
+
     }
 }
