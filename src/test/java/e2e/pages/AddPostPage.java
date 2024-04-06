@@ -66,7 +66,7 @@ public class AddPostPage extends HomeblogPage{
        driver.findElements(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
     }
     public void setImageInput(String image){
-        imageInput.sendKeys("/Users/Tanya/Desktop/Cat.jpeg");
+        imageInput.sendKeys("/Users/Tanya/Desktop/Cat2.jpeg");
     }
 
     @Step("Save post as a draft")

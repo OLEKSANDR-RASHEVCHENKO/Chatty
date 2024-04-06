@@ -43,32 +43,52 @@ public class EditDeletePostPage extends BasePage{
         getWait().forVisibility(deleteButton);
     }
 
-    public void clickEditButton(){
-        editButton.click();
-    }
+//    driver.findElement(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));public void clickEditButton(){
+//        editButton.click();
+//    }
 
-    public void editPost(String titleInput, String descriptionInput, String textareaInput){
+    public void editPost(String titleInput, String descriptionInput, String textareaInput,String imagePath){
+        editButton.click();
+        getWait().forVisibility(editTitle);
         editTitle.clear();
         editTitle.sendKeys(titleInput);
         editDescription.clear();
-        editTitle.sendKeys(descriptionInput);
+        editDescription.sendKeys(descriptionInput);
         editTextarea.clear();
-        editTitle.sendKeys(textareaInput);
-
-
-    }
-
-
-    public void getEditImage(String ImageInput){
-        WebElement fileInput = driver.findElement(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
-        fileInput.click();
-    }
-
-    public void setEditImageInput(String newImage){
-        editImage.sendKeys("/Users/Tanya/Desktop/Cat2.jpeg");
-    }
-
-    public void clickSaveButton(){
+        editTextarea.sendKeys(textareaInput);
+        downloadImage(imagePath);
+        getWait().forVisibility(editImage);
         editSubmitButton.click();
+
+
     }
+    public void downloadImage(String imagePath) {
+    WebElement imageInput = driver.findElement(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
+    imageInput.sendKeys(imagePath);
+    }
+
+    public String getPostEditTitle(String editTitle){
+        String editedPost = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='" + editTitle +"']")).getText();
+        return editedPost;
+    }
+
+    public void deletePost(){
+        deleteButton.click();
+    }
+
+
+
+
+//    public void getEditImage(String imageInput){
+//        WebElement fileInput = driver.findElement(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
+//        fileInput.click();
+//    }
+//
+//    public void setEditImageInput(String newImage){
+//        editImage.sendKeys("/Users/Tanya/Desktop/Cat2.jpeg");
+//    }
+
+//    public void clickSaveButton(){
+//        editSubmitButton.click();
+//    }
 }

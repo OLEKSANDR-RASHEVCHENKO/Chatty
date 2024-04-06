@@ -68,17 +68,17 @@ public class UserCanEditPostTest extends BaseTest{
         homeblogPage.waitForLoading();
         homeblogPage.clickMyPostsButton();
         homeblogPage.waitForLoading();
-        homeblogPage.clickOnPost();
+        homeblogPage.clickOnPost(title);
 
         editDeletePostPage = new EditDeletePostPage(app.driver);
         editDeletePostPage.waitForLoading();
-        editDeletePostPage.clickEditButton();
-        editDeletePostPage.editPost(title,description,textarea);
+        //editDeletePostPage.clickEditButton();
+        //editDeletePostPage.editPost(editTitle,editDescription,editTextarea);
 
         editDeletePostPage.getEditImage(editImageInput);
 
         editDeletePostPage.setEditImageInput(editImage);
-        editDeletePostPage.clickEditButton();
+        //editDeletePostPage.clickEditButton();
 
 
 

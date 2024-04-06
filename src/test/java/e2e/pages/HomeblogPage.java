@@ -32,12 +32,39 @@ public class HomeblogPage extends BasePage {
     @FindBy(xpath = "//*[@data-test='post']")
     WebElement post;
 
+    @FindBy(xpath = "//*[@data-test='title-input']")
+    WebElement titleInput;
+
+    @FindBy(xpath = "//*[@data-test='description-input']")
+    WebElement descriptionInput;
+
+    @FindBy(xpath = "//*[@data-test='textarea']")
+    WebElement textareaInput;
+
+    @FindBy(xpath = "//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']")
+    WebElement imageInput;
+
+    @FindBy(xpath = "//*[@id='publishDate']")
+    WebElement publishDateButton;
+
+    @FindBy(xpath = "//*[@for='draftCheckbox']")
+    WebElement draftButton;
+
+    @FindBy(xpath = "//*[@data-test='submit']")
+    WebElement submitButton;
 
     @Step("Wait for loading homeblog page")
     public void waitForLoading() {
         getWait().forVisibility(logo);
-        getWait().forVisibility(myDraftsButton);
+        //getWait().forVisibility(myDraftsButton);
         //getWait().forVisibility(myPostsButton);
+        //getWait().forVisibility(titleInput);
+        //getWait().forVisibility(descriptionInput);
+        //getWait().forVisibility(textareaInput);
+        //getWait().forClickable(imageInput);
+        //getWait().forVisibility(publishDateButton);
+        //getWait().forVisibility(draftButton);
+        //getWait().forClickable(submitButton);
     }
 
     @Step("Open create post page")
@@ -51,26 +78,63 @@ public class HomeblogPage extends BasePage {
         myDraftsButton.click();
     }
 
-//    public String getPostTitle() {
-//    return postTitle.getText();
-//    }
-//    public String getPostDescription() {
-//        return postDescription.getText();
-//    }
     public void clickMyPostsButton(){
         myPostsButton.click();
     }
 
-    public void clickOnPost(){
-        post.click();
-    }
+//    public void clickOnPost(){
+//        post.click();
+//    }
 
-    public String checkIfPostCreated(String title){
+    public String getPostTitle(String title){
         String createdPost = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='" + title +"']")).getText();
         return createdPost;
     }
+
     public void clickLogo(){
         logo.click();
+    }
+    public void clickOnPost(String title){
+        WebElement createdPost = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='" + title +"']"));
+        createdPost.click();
+    }
+
+
+
+
+    public void setTitleInput(String title) {
+        titleInput.sendKeys(title);
+    }
+
+    public void setDescriptionInput(String description) {
+        descriptionInput.sendKeys(description);
+    }
+
+    public void setTextareaInput(String textarea) {
+        textareaInput.sendKeys(textarea);
+    }
+
+    public String getTitle() {
+        return titleInput.getText();
+    }
+    public String getDescription() {
+        return descriptionInput.getText();
+    }
+
+    public void getImage(String imageInput){
+        driver.findElements(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
+    }
+    public void setImageInput(String image){
+        imageInput.sendKeys("/Users/Tanya/Desktop/Cat2.jpeg");
+    }
+
+    @Step("Save post as a draft")
+    public void savePostAsDraft(){
+        draftButton.click();
+    }
+
+    public void savePost(){
+        submitButton.click();
     }
 }
 
