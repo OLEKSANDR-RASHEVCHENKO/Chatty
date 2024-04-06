@@ -31,7 +31,7 @@ public class UserCanEditPostTest extends BaseTest{
         String email = "tatyanaskv@rambler.ru";
         String password = "123456Start";
 
-        String title = faker.internet().uuid();
+        String title = faker.name().firstName();
         String description = faker.internet().uuid();
         String textarea = faker.lorem().sentence();
         String image = "Image Path";
@@ -40,6 +40,7 @@ public class UserCanEditPostTest extends BaseTest{
         String editTitle = "Cat";
         String editDescription = "This is my Cat";
         String editTextarea = "It is very cute";
+        String editImage = "Cat2";
         String editImageInput = "New cat";
 
         loginPage = new LoginPage(app.driver);
@@ -65,7 +66,6 @@ public class UserCanEditPostTest extends BaseTest{
 
         homeblogPage = new HomeblogPage(app.driver);
         homeblogPage.waitForLoading();
-        //checkIfPostCreated(title, description);
         homeblogPage.clickMyPostsButton();
         homeblogPage.waitForLoading();
         homeblogPage.clickOnPost();
@@ -73,11 +73,11 @@ public class UserCanEditPostTest extends BaseTest{
         editDeletePostPage = new EditDeletePostPage(app.driver);
         editDeletePostPage.waitForLoading();
         editDeletePostPage.clickEditButton();
-        editDeletePostPage.setEditTitle(editTitle);
-        editDeletePostPage.setEditDescription(editDescription);
-        editDeletePostPage.setEditTextarea(editTextarea);
-        editDeletePostPage.getEditImage(imageInput);
-        editDeletePostPage.setEditImageInput(editImageInput);
+        editDeletePostPage.editPost(title,description,textarea);
+
+        editDeletePostPage.getEditImage(editImageInput);
+
+        editDeletePostPage.setEditImageInput(editImage);
         editDeletePostPage.clickEditButton();
 
 

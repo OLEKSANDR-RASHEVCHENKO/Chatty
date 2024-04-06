@@ -25,10 +25,10 @@ public class UserCanCreatePostTest extends BaseTest {
 
     @Test()
 public void userCanCreatePost() {
-        String email = "tatyanaskv@rambler.ru";
+        String email = "tatyanaskv12@rambler.ru";
         String password = "123456Start";
 
-        String title = faker.internet().uuid();
+        String title = faker.name().firstName();
         String description = faker.internet().uuid();
         String textarea = faker.lorem().sentence();
         String image = "Image Path";
@@ -57,7 +57,10 @@ public void userCanCreatePost() {
 
         homeblogPage = new HomeblogPage(app.driver);
         homeblogPage.waitForLoading();
-        checkIfPostCreated(title, description);
+        homeblogPage.clickMyPostsButton();
+        homeblogPage.waitForLoading();
+        String createdTitle = homeblogPage.checkIfPostCreated(title);
+        Assert.assertEquals(createdTitle, title);
 
 
 

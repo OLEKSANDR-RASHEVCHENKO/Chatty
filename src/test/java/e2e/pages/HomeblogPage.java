@@ -1,6 +1,7 @@
 package e2e.pages;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -62,6 +63,14 @@ public class HomeblogPage extends BasePage {
 
     public void clickOnPost(){
         post.click();
+    }
+
+    public String checkIfPostCreated(String title){
+        String createdPost = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='" + title +"']")).getText();
+        return createdPost;
+    }
+    public void clickLogo(){
+        logo.click();
     }
 }
 

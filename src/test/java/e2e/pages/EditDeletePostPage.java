@@ -47,19 +47,24 @@ public class EditDeletePostPage extends BasePage{
         editButton.click();
     }
 
-    public void setEditTitle(String title){
-        editTitle.sendKeys(title);
+    public void editPost(String titleInput, String descriptionInput, String textareaInput){
+        editTitle.clear();
+        editTitle.sendKeys(titleInput);
+        editDescription.clear();
+        editTitle.sendKeys(descriptionInput);
+        editTextarea.clear();
+        editTitle.sendKeys(textareaInput);
+
+
     }
-    public void setEditDescription(String description){
-        editTitle.sendKeys(description);
+
+
+    public void getEditImage(String ImageInput){
+        WebElement fileInput = driver.findElement(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
+        fileInput.click();
     }
-    public void setEditTextarea(String textarea){
-        editTitle.sendKeys(textarea);
-    }
-    public void getEditImage(String imageInput){
-        driver.findElements(By.xpath("//*[@src='https://chatty-images-s3.s3.eu-central-1.amazonaws.com/c5823264-dec3-4cc6-a77f-0bbca9ac7535/d668e640-91ed-4946-9600-4d04da9203d4.jpeg']"));
-    }
-    public void setEditImageInput(String editImageInput){
+
+    public void setEditImageInput(String newImage){
         editImage.sendKeys("/Users/Tanya/Desktop/Cat2.jpeg");
     }
 
