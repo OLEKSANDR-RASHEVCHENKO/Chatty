@@ -47,16 +47,16 @@ public class EditDeletePostPage extends BasePage{
 //        editButton.click();
 //    }
 
-    public void editPost(String titleInput, String descriptionInput, String textareaInput,String imagePath){
+    public void editPost(String editTitleInput, String editDescriptionInput, String editTextareaInput,String editImagePath){
         editButton.click();
         getWait().forVisibility(editTitle);
         editTitle.clear();
-        editTitle.sendKeys(titleInput);
+        editTitle.sendKeys(editTitleInput);
         editDescription.clear();
-        editDescription.sendKeys(descriptionInput);
+        editDescription.sendKeys(editDescriptionInput);
         editTextarea.clear();
-        editTextarea.sendKeys(textareaInput);
-        downloadImage(imagePath);
+        editTextarea.sendKeys(editTextareaInput);
+        downloadImage(editImagePath);
         getWait().forVisibility(editImage);
         editSubmitButton.click();
 

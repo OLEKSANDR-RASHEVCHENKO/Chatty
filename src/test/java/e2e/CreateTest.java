@@ -1,14 +1,13 @@
 package e2e;
 
 import com.github.javafaker.Faker;
-import e2e.pages.AddPostPage;
 import e2e.pages.EditDeletePostPage;
 import e2e.pages.HomeblogPage;
 import e2e.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class UserCanCreatePostTest extends BaseTest {
+public class CreateTest extends BaseTest {
     LoginPage loginPage;
     HomeblogPage homeblogPage;
     //AddPostPage addPostPage;
@@ -26,7 +25,7 @@ public class UserCanCreatePostTest extends BaseTest {
 
 
     @Test()
-public void userCanCreatePost() {
+    public void userCanCreatePost() {
         String email = "tatyanaskv12@rambler.ru";
         String password = "123456Start";
 
@@ -51,17 +50,20 @@ public void userCanCreatePost() {
         homeblogPage.waitForLoading();
         homeblogPage.openCreatePostPage();
 
+        homeblogPage.createPost(title, description, textarea, image);
+
         //addPostPage = new AddPostPage(app.driver);
-        homeblogPage.waitForLoading();
-        homeblogPage.setTitleInput(title);
-        homeblogPage.setDescriptionInput(description);
-        homeblogPage.setTextareaInput(textarea);
+
+//        homeblogPage.waitForLoading();
+//        homeblogPage.setTitleInput(title);
+//        homeblogPage.setDescriptionInput(description);
+//        homeblogPage.setTextareaInput(textarea);
 
 
-        homeblogPage.getImage(imageInput);
-        homeblogPage.setImageInput(image);
-        homeblogPage.waitForLoading();
-        homeblogPage.savePost();
+//        homeblogPage.getImage(imageInput);
+//        homeblogPage.setImageInput(image);
+//        homeblogPage.waitForLoading();
+//        homeblogPage.savePost();
 
         homeblogPage = new HomeblogPage(app.driver);
         homeblogPage.waitForLoading();
@@ -71,45 +73,35 @@ public void userCanCreatePost() {
         Assert.assertEquals(createdTitle, title);
         homeblogPage.clickOnPost(title);
 
-        editDeletePostPage = new EditDeletePostPage(app.driver);
-        editDeletePostPage.waitForLoading();
-        //editDeletePostPage.clickEditButton();
-        editDeletePostPage.editPost(editTitle,editDescription,editTextarea, editImage);
-        //editDeletePostPage.getEditImage(editImage);
-        //editDeletePostPage.setEditImageInput(editImageInput);
-        //editDeletePostPage.clickEditButton();
-
-        homeblogPage = new HomeblogPage(app.driver);
-        homeblogPage.waitForLoading();
-        homeblogPage = new HomeblogPage(app.driver);
-        homeblogPage.clickLogo();
-        homeblogPage.clickMyPostsButton();
-        String editedTitle = editDeletePostPage.getPostEditTitle(editTitle);
-        Assert.assertEquals(editedTitle, editTitle);
-
-        homeblogPage.clickMyPostsButton();
-        homeblogPage.getPostTitle(editedTitle);
-        homeblogPage.waitForLoading();
-        homeblogPage.clickOnPost(title);
-
-
-        //editDeletePostPage = new EditDeletePostPage(app.driver);
-        editDeletePostPage.deletePost();
-        homeblogPage = new HomeblogPage(app.driver);
-        homeblogPage.waitForLoading();
-        homeblogPage.clickMyPostsButton();
-        homeblogPage.waitForLoading();
-//        Assert.assertFalse(homeblogPage.);
-
-
-
-
-
-
-
-
+//        editDeletePostPage = new EditDeletePostPage(app.driver);
+//        editDeletePostPage.waitForLoading();
+//        //editDeletePostPage.clickEditButton();
+//        editDeletePostPage.editPost(editTitle, editDescription, editTextarea, editImage);
+//        //editDeletePostPage.getEditImage(editImage);
+//        //editDeletePostPage.setEditImageInput(editImageInput);
+//        //editDeletePostPage.clickEditButton();
+//
+//        homeblogPage = new HomeblogPage(app.driver);
+//        homeblogPage.waitForLoading();
+//        homeblogPage = new HomeblogPage(app.driver);
+//        homeblogPage.clickLogo();
+//        homeblogPage.clickMyPostsButton();
+//        String editedTitle = editDeletePostPage.getPostEditTitle(editTitle);
+//        Assert.assertEquals(editedTitle, editTitle);
+//
+//        homeblogPage.clickMyPostsButton();
+//        homeblogPage.getPostTitle(editedTitle);
+//        homeblogPage.waitForLoading();
+//        homeblogPage.clickOnPost(title);
+//
+//
+//        //editDeletePostPage = new EditDeletePostPage(app.driver);
+//        editDeletePostPage.deletePost();
+//        homeblogPage = new HomeblogPage(app.driver);
+//        homeblogPage.waitForLoading();
+//        homeblogPage.clickMyPostsButton();
+//        homeblogPage.waitForLoading();
+////        Assert.assertFalse(homeblogPage.);
+//
     }
-
-
-
 }

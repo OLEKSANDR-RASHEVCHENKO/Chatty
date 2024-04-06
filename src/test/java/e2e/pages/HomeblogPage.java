@@ -1,10 +1,15 @@
 package e2e.pages;
 
 import io.qameta.allure.Step;
+import org.checkerframework.framework.qual.DefaultQualifier;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
+
+import java.awt.*;
+import java.util.List;
 
 public class HomeblogPage extends BasePage {
     public HomeblogPage(WebDriver driver) {
@@ -66,6 +71,18 @@ public class HomeblogPage extends BasePage {
         //getWait().forVisibility(draftButton);
         //getWait().forClickable(submitButton);
     }
+    public void createPost(String title, String description, String textarea,String image){
+
+        getWait().forVisibility(postTitle);
+        titleInput.sendKeys(title);
+        descriptionInput.sendKeys(description);
+        textareaInput.sendKeys(textarea);
+        downloadPhoto(image);
+        getWait().forVisibility(imageInput);
+        submitButton.click();
+
+
+    }
 
     @Step("Open create post page")
     public void openCreatePostPage() {
@@ -99,9 +116,6 @@ public class HomeblogPage extends BasePage {
         createdPost.click();
     }
 
-
-
-
     public void setTitleInput(String title) {
         titleInput.sendKeys(title);
     }
@@ -111,15 +125,15 @@ public class HomeblogPage extends BasePage {
     }
 
     public void setTextareaInput(String textarea) {
-        textareaInput.sendKeys(textarea);
+        //textareaInput.sendKeys(textarea);
     }
 
-    public String getTitle() {
-        return titleInput.getText();
-    }
-    public String getDescription() {
-        return descriptionInput.getText();
-    }
+//    public String getTitle() {
+//        return titleInput.getText();
+//    }
+//    public String getDescription() {
+//        return descriptionInput.getText();
+//    }
 
     public void getImage(String imageInput){
         driver.findElements(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
@@ -128,13 +142,23 @@ public class HomeblogPage extends BasePage {
         imageInput.sendKeys("/Users/Tanya/Desktop/Cat2.jpeg");
     }
 
-    @Step("Save post as a draft")
-    public void savePostAsDraft(){
-        draftButton.click();
-    }
+//    @Step("Save post as a draft")
+//    public void savePostAsDraft(){
+//        draftButton.click();
+//    }
 
     public void savePost(){
         submitButton.click();
     }
+
+
+//    public boolean checkIfPostDeleted(String title){
+//        List<WebElement> post = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='" + title +"']"));
+//        return !post.isEmpty();
+//    }
+public void downloadPhoto(String imagePath) {
+    WebElement imageInput = driver.findElement(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
+    imageInput.sendKeys(imagePath);
+}
 }
 
