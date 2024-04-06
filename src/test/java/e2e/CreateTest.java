@@ -66,6 +66,18 @@ public class CreateTest extends BaseTest {
         homeblogPage.clickMyPostsButton();
         String editedTitle = editDeletePostPage.getPostEditTitle(editTitle);
         Assert.assertEquals(editedTitle, editTitle);
+        homeblogPage.clickOnPost(editedTitle);
+
+        editDeletePostPage = new EditDeletePostPage(app.driver);//
+        editDeletePostPage.deletePost();
+        homeblogPage = new HomeblogPage(app.driver);
+        homeblogPage.waitForLoading();
+        homeblogPage.clickMyPostsButton();
+        homeblogPage.waitForLoading();
+        //Assert.assertFalse(homeblogPage.);
+
+    }
+
 
 //        homeblogPage.clickMyPostsButton();
 //        homeblogPage.waitForLoading();
@@ -77,16 +89,7 @@ public class CreateTest extends BaseTest {
 //        homeblogPage = new HomeblogPage(app.driver);
 //        homeblogPage.waitForLoading();
 
-        homeblogPage.clickOnPost(editedTitle);
 
 
-        editDeletePostPage = new EditDeletePostPage(app.driver);//
-        editDeletePostPage.deletePost();
-        homeblogPage = new HomeblogPage(app.driver);
-        homeblogPage.waitForLoading();
-        homeblogPage.clickMyPostsButton();
-        homeblogPage.waitForLoading();
-        //Assert.assertFalse(homeblogPage.);
 
-    }
 }
