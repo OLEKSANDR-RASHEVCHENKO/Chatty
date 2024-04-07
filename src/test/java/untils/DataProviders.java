@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class DataProvider {
+public class DataProviders {
     Faker faker = new Faker();
     @org.testng.annotations.DataProvider
     public Iterator<Object[]> newContact(){

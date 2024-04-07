@@ -3,6 +3,7 @@ package e2e;
 import e2e.pages.HomeblogPage;
 import e2e.pages.LoginPage;
 import org.testng.annotations.Test;
+import untils.DataProviders;
 
 public class LoginTest extends BaseTest{
     LoginPage loginPage;
@@ -48,7 +49,7 @@ public class LoginTest extends BaseTest{
     }
 
 
-    @Test(dataProvider = "invalidLoginData", dataProviderClass = DataProvider.class)
+    @Test(dataProvider = "invalidLoginData", dataProviderClass = DataProviders.class)
     public void userCannotLogin(String email, String password, String caseName) {
         loginPage = new LoginPage(app.driver);
         loginPage.waitForLoading();
