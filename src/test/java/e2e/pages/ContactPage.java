@@ -3,12 +3,14 @@ package e2e.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 public class ContactPage extends BasePage{
     public ContactPage(WebDriver driver) {
         super(driver);
     }
-
+    @FindBy(xpath = "//*[@class='contact-box']//h1")
+    WebElement header;
     @FindBy(xpath = "//*[@href='/contact']")
     WebElement contactUsButton;
     @FindBy(xpath = "//*[@id='name']")
@@ -17,10 +19,15 @@ public class ContactPage extends BasePage{
     WebElement emailInput;
     @FindBy(xpath = "//*[@id='content']")
     WebElement messageInput;
+    @FindBy(xpath = "//*[@class='error']")
+    WebElement invalidEmail;
     @FindBy(xpath = "//*[@type='submit']")
     WebElement sendMessageButton;
+    @FindBy(xpath = "//*[@class='success-message']")
+    WebElement successfullyMessage;
 
-    public void waitForOpen(){
+    public void waitForLoading(){
+        getWait().forVisibility(header);
         getWait().forVisibility(nameInput);
         getWait().forVisibility(emailInput);
         getWait().forVisibility(messageInput);
@@ -32,6 +39,14 @@ public class ContactPage extends BasePage{
         emailInput.sendKeys(email);
         messageInput.sendKeys(message);
         sendMessageButton.click();
+    }
+    public void waitForInvalidMassage(){
+        getWait().forVisibility(invalidEmail);
+        Assert.assertTrue(invalidEmail.isDisplayed());
+    }
+    public void waitForSuccessfullyMessage(){
+        getWait().forVisibility(successfullyMessage);
+        Assert.assertTrue(successfullyMessage.isDisplayed());
     }
 
 }
