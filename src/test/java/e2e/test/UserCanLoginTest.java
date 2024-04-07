@@ -35,24 +35,24 @@ public class UserCanLoginTest extends TestBase {
         loginTestMethod("chipsa14@gmail.com","Gazmanov1234",null,false,false);
     }
     @Test
-    public void userCanLoginWithInvalidEmail() {
+    public void userCanNotLoginWithInvalidEmail() {
         loginTestMethod("chipsa13@gmail.com", "Gazmanov1234", "login_invalid_email", true,false);
     }
     @Test
-    public void userCanLoginWithInvalidPassword() {
+    public void userCanNotLoginWithInvalidPassword() {
         loginTestMethod("chipsa12@gmail.com", "Gazmanov12345", "login_invalid_password", true,true
         );
     }
     @Test
-    public void userCanLoginWithInvalidEmailAndPassword() {
+    public void userCanNotLoginWithInvalidEmailAndPassword() {
         loginTestMethod("gmail@email.de", "Gazmanosdfv1234", "login_invalid_email_and_password", true,false);
     }
     @Test
-    public void userCanLoginWithEmptyEmail() {
+    public void userCanNotLoginWithEmptyEmail() {
         loginTestMethod("", "Gazmanosdfv1234", "login_invalid_email_and_password", true,true);
     }
     @Test
-    public void userCanLoginWithEmptyPassword() {
+    public void userCanNotLoginWithEmptyPassword() {
         loginTestMethod("gmail@email.de", "f", "login_invalid_email_and_password", true,true);
     }
 }

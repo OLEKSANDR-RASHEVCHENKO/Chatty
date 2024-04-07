@@ -166,11 +166,11 @@ public class HomePage extends BasePage{
     }
 
     public void clickOnOneFromHeaderMenu(Header_menu headerMenu){
-        WebElement clickOnOneFromHeaderMenu = driver.findElement(By.xpath(headerMenu.getHeaderMenu()));
+        WebElement clickOnOneFromHeaderMenu = driver.findElement(By.xpath(headerMenu.getListOfHeader()));
         clickOnOneFromHeaderMenu.click();
     }
     public void clickOnOneFromDropDownMenu(DropDownMenu dropDownMenu){
-        WebElement clickOnOneFromDropDownMenu = driver.findElement(By.xpath(dropDownMenu.getDropDownMenu()));
+        WebElement clickOnOneFromDropDownMenu = driver.findElement(By.xpath(dropDownMenu.getListOfDropDownMenu()));
         clickOnOneFromDropDownMenu.click();
     }
     public void hoverOverElement(WebDriver driver){

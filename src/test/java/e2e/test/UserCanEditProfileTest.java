@@ -15,12 +15,12 @@ public class UserCanEditProfileTest extends TestBase {
     HomePage homePage;
     YourProfilePage yourProfilePage;
     Faker faker;
-    @Epic(value = "Login")
-    @Feature(value= "User login")
-    @Story(value = "User can login with role admin")
-    @Description(value = "User can login")
-    @Severity(SeverityLevel.BLOCKER)
-    @Test(description = "User Can Login")
+    @Epic(value = "Edit profile")
+    @Feature(value= "User can edite profile")
+    @Story(value = "User can edit profile ")
+    @Description(value = "User can edite profile")
+    @Severity(SeverityLevel.MINOR)
+    @Test(description = "User can edit profile")
     public void user(){
         String email = "chipsa15@gmail.com";
         String password = "Gazmanov1234";

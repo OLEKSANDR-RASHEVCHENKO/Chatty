@@ -15,12 +15,12 @@ public class UserCanCreateEditDeletePostTest extends TestBase {
     PostPage postPage;
     Faker faker;
 
-    @Epic(value = "Login")
-    @Feature(value= "User login")
-    @Story(value = "User can login with role admin")
-    @Description(value = "User can login")
+    @Epic(value = "User can create ,edit,delete post")
+    @Feature(value= "User can create post then edit then delete")
+    @Story(value = "User can create post and edit then and delete then")
+    @Description(value = "Checking on the process of creating deleting adn editing posts")
     @Severity(SeverityLevel.BLOCKER)
-    @Test(description = "User Can Login")
+    @Test(description = "User can create delete and edit post")
     public void user() throws InterruptedException {
         String email = "chipsa15@gmail.com";
         String password = "Gazmanov1234";
@@ -28,12 +28,12 @@ public class UserCanCreateEditDeletePostTest extends TestBase {
         String title = faker.name().firstName();
         String description = faker.book().title();
         String textArea = faker.lorem().paragraph();
-        String filePath = "C:\\Users\\Oleksandr\\OneDrive\\Рабочий стол\\447238255 (1).jpg";
+        String filePath = "C:\\Users\\Oleksandr\\IdeaProjects\\Chatty\\src\\test\\java\\Photo\\447238255 (1).jpg";
         String data = "28.03.2025";
         String editedTitle = faker.name().firstName();
         String editedDescription = faker.book().title();
         String editedTextArea = faker.lorem().paragraph();
-        String editedFilePath = "C:\\Users\\Oleksandr\\OneDrive\\Рабочий стол\\1583662555_17.jpg";
+        String editedFilePath = "C:\\Users\\Oleksandr\\IdeaProjects\\Chatty\\src\\test\\java\\Photo\\th.jpg";
 
         loginPage = new LoginPage(app.driver);
         loginPage.loginInSystem(email, password);

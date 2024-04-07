@@ -48,4 +48,4 @@ task loginTest(type: Test) {
         exceptionFormat "full"
     }
     systemProperty 'allure.result.directory', 'build/allure-results'
-//}
+}

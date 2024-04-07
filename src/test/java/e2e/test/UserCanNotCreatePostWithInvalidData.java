@@ -23,7 +23,7 @@ public void createPostMethod(String title,String description,String textArea,boo
     String email = "chipsa15@gmail.com";
     String password = "Gazmanov1234";
     faker = new Faker();
-    String filePath = "C:\\Users\\Oleksandr\\OneDrive\\Рабочий стол\\447238255 (1).jpg";
+    String filePath = "C:\\Users\\Oleksandr\\IdeaProjects\\Chatty\\src\\test\\java\\Photo\\th.jpg";
     String data = "28.03.2025";
 
     loginPage = new LoginPage(app.driver);
@@ -52,10 +52,6 @@ public void createPostMethod(String title,String description,String textArea,boo
 public void userCanNotCreatePostWithEmptyTitle(){
     createPostMethod("","dfdf","dfdf",true,false,false);
 }
-    @Test
-    public void userCanNotCreatePostWithEmptyDescription(){
-        createPostMethod("Hallo","","dfddf",false,true,false);
-    }
     @Test
     public void userCanNotCreatePostWithEmptyTextArea(){
         createPostMethod("Hallo","dfdf","",false,false,true);

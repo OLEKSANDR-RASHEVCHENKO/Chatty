@@ -13,17 +13,17 @@ public class AdminCanDeleteUserTest extends TestBase {
     AdminPanel adminPanel;
     PostPage postPage;
     Faker faker;
-    @Epic(value = "Login")
-    @Feature(value= "User login")
-    @Story(value = "User can login with role admin")
-    @Description(value = "User can login")
-    @Severity(SeverityLevel.BLOCKER)
-    @Test(description = "User Can Login")
+    @Epic(value = "Admin can delete user")
+    @Feature(value= "Deleting users as Admin")
+    @Story(value = "Admin can delete user with role admin")
+    @Description(value = "Admin can delete user")
+    @Severity(SeverityLevel.MINOR)
+    @Test(description = "Admin can delete user")
     public void adminCanDeleteUser(){
-        String email = "rashfefffdd@gmail.com";
+        String email = "rashfeffdcfdd@gmail.com";
         String password = "Gazmanov1234";
         String confirmPassword = "Gazmanov1234";
-        String emailAsAdmin = "rasehfffffdAdmin@gmail.com";
+        String emailAsAdmin = "rasehfffcfdfdAdmin@gmail.com";
         String passwordAsAdmin = "Gazmanov1234";
         String confirmPasswordAsAdmin = "Gazmanov1234";
         loginPage=new LoginPage(app.driver);
