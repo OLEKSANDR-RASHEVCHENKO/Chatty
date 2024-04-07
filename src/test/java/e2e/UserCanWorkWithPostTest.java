@@ -7,7 +7,7 @@ import e2e.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class UserCanWorkWithPostsTest extends BaseTest {
+public class UserCanWorkWithPostTest extends BaseTest {
     LoginPage loginPage;
     HomeblogPage homeblogPage;
     EditDeletePostPage editDeletePostPage;

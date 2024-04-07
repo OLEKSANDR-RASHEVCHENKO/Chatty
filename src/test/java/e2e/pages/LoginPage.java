@@ -20,6 +20,9 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//*[@class='registration-btn']")
     WebElement loginButton;
 
+
+
+
     @Step("Wait for loading Login page")
     public void waitForLoading(){
         getWait().forVisibility(emailInput);
