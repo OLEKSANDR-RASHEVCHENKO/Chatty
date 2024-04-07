@@ -1,9 +1,11 @@
 package e2e_Teti.pages;
 
+import enums.DropDownMenu;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 public class HomeblogPage extends BasePage {
@@ -125,6 +127,15 @@ public class HomeblogPage extends BasePage {
     public String getUserNameFromHomePage(){
         String userNameUnderImage = nameUnderImage.getText();
         return  userNameUnderImage;
+    }
+    public void clickOnOneFromDropDownMenu(DropDownMenu dropDownMenu){
+        WebElement clickOnOneFromDropDownMenu = driver.findElement(By.xpath(dropDownMenu.getListOfDropDownMenu()));
+        clickOnOneFromDropDownMenu.click();
+    }
+    public void hoverOverElement(WebDriver driver){
+        WebElement elementToHover = driver.findElement(By.xpath("//p[contains(text(), 'Hello,')]"));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(elementToHover).perform();
     }
 
 

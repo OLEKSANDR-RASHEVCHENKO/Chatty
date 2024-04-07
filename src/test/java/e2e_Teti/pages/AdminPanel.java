@@ -30,9 +30,10 @@ public class AdminPanel extends BasePage{
         getWait().forVisibility(searchEmailInput);
     }
 
-    public void deleteProfile(){
-        searchEmailInput.sendKeys();
+    public void deleteProfile(String email){
+        searchEmailInput.sendKeys(email);
         searchEmailButton.click();
+        deleteButton.click();
     }
 
     public void waitForSearchEmailInput(){

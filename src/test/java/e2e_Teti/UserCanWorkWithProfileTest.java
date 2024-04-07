@@ -2,6 +2,7 @@ package e2e_Teti;
 
 import com.github.javafaker.Faker;
 import e2e_Teti.pages.*;
+import enums.DropDownMenu;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -45,9 +46,11 @@ public class UserCanWorkWithProfileTest extends BaseTest {
         String nameOnHomepage = homeblogPage.getUserNameFromHomePage();
         Assert.assertEquals(nameOnHomepage, editName);
 
+        homeblogPage.hoverOverElement(app.driver);
+        homeblogPage.clickOnOneFromDropDownMenu(DropDownMenu.AdminPanel);
+
         adminPanel = new AdminPanel(app.driver);
-        adminPanel.openAdminPanel();
-        adminPanel.deleteProfile();
+        adminPanel.deleteProfile(email);
 
     }
 }
