@@ -8,6 +8,7 @@ public class LoginTest extends BaseTest{
     LoginPage loginPage;
     HomeblogPage homeblogPage;
 
+
     private void loginTestMethod(String email, String password, String screenshotName, boolean negativeCase) {
         loginPage = new LoginPage(app.driver);
         loginPage.waitForLoading();
@@ -47,9 +48,7 @@ public class LoginTest extends BaseTest{
     }
 
 
-
-
-    @Test(dataProvider = "invalidLoginData", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = "invalidLoginData", dataProviderClass = DataProvider.class)
     public void userCannotLogin(String email, String password, String caseName) {
         loginPage = new LoginPage(app.driver);
         loginPage.waitForLoading();
@@ -80,4 +79,4 @@ public class LoginTest extends BaseTest{
         loginTestMethod("newtestgmail.com", "newtestgmail.com", "login_invalid_email_and_password", true);
     }
 }
-}
+

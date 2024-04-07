@@ -33,6 +33,9 @@ public class LoginPage extends BasePage{
         passwordInput.sendKeys(password);
         loginButton.click();
 }
+    public void takeLoginPageScreenshot(String actualScreenshotName){
+        takeAndCompareScreenshot(actualScreenshotName, null);
+    }
 
 
 }
