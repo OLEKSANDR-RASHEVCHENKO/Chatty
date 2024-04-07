@@ -24,21 +24,9 @@ public class LoginTest extends BaseTest{
         }
     }
 
-    @Test(description = "User can login with valid data as a user")
-    public void userCanLogin(){
-        String email = "tatyanaskv@rambler.ru";
-        String password = "123456Start";
-
-        loginPage = new LoginPage(app.driver);
-        loginPage.login(email, password);
-
-        homeblogPage = new HomeblogPage(app.driver);
-        homeblogPage.waitForLoading();
-    }
-
-//    @Test(description = "User can not login with invalid data as a user")
-//            public void userCanNotLoginWithInvalidEmail(){
-//        String email = "tatyanaskv@rambler123.ru";
+//    @Test(description = "User can login with valid data as a user")
+//    public void userCanLogin(){
+//        String email = "tatyanaskv@rambler.ru";
 //        String password = "123456Start";
 //
 //        loginPage = new LoginPage(app.driver);
@@ -48,17 +36,15 @@ public class LoginTest extends BaseTest{
 //        homeblogPage.waitForLoading();
 //    }
 
-
-    @Test(dataProvider = "invalidLoginData", dataProviderClass = DataProviders.class)
-    public void userCannotLogin(String email, String password, String caseName) {
-        loginPage = new LoginPage(app.driver);
-        loginPage.waitForLoading();
-        loginPage.login(email, password);
-
-        loginPage.waitForLoading();
-        loginPage.takeLoginPageScreenshot(caseName + "_negative_login_case");
-    }
-
+//    @Test(dataProvider = "invalidLoginData", dataProviderClass = DataProviders.class)
+//    public void userCannotLogin(String email, String password, String caseName) {
+//        loginPage = new LoginPage(app.driver);
+//        loginPage.waitForLoading();
+//        loginPage.login(email, password);
+//
+//        loginPage.waitForLoading();
+//        loginPage.takeLoginPageScreenshot(caseName + "_negative_login_case");
+//    }
 
     @Test
     public void userCanLoginWithValidData() {

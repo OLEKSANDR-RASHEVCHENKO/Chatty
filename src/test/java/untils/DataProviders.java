@@ -25,10 +25,10 @@ public class DataProviders {
         list.add(new Object[]{"213123","234234", "with_invalid_data"});
         return list.iterator();
     }
-    @org.testng.annotations.DataProvider
-    public Iterator<Object[]> newUserData(){
-        List<Object[]> list = new ArrayList<>();
-        list.add(new Object[]{"new10t@gmail.com", "new14t@gmail.com"});
-        return list.iterator();
-    }
+//    @org.testng.annotations.DataProvider
+//    public Iterator<Object[]> newUserData(){
+//        List<Object[]> list = new ArrayList<>();
+//        list.add(new Object[]{"new10t@gmail.com", "new14t@gmail.com"});
+//        return list.iterator();
+//    }
 }
