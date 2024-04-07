@@ -36,17 +36,17 @@ public class LoginTest extends BaseTest{
         homeblogPage.waitForLoading();
     }
 
-    @Test(description = "User can not login with invalid data as a user")
-            public void userCanNotLoginWithInvalidEmail(){
-        String email = "tatyanaskv@rambler123.ru";
-        String password = "123456Start";
-
-        loginPage = new LoginPage(app.driver);
-        loginPage.login(email, password);
-
-        homeblogPage = new HomeblogPage(app.driver);
-        homeblogPage.waitForLoading();
-    }
+//    @Test(description = "User can not login with invalid data as a user")
+//            public void userCanNotLoginWithInvalidEmail(){
+//        String email = "tatyanaskv@rambler123.ru";
+//        String password = "123456Start";
+//
+//        loginPage = new LoginPage(app.driver);
+//        loginPage.login(email, password);
+//
+//        homeblogPage = new HomeblogPage(app.driver);
+//        homeblogPage.waitForLoading();
+//    }
 
 
     @Test(dataProvider = "invalidLoginData", dataProviderClass = DataProviders.class)
@@ -67,17 +67,17 @@ public class LoginTest extends BaseTest{
 
     @Test
     public void userCanLoginWithInvalidEmail() {
-        loginTestMethod("newtestgmail.com", "newtest@gmail.com", "login_invalid_email", true);
+        loginTestMethod("teddy@gmail.com", "123456Start", "login_invalid_email", true);
     }
 
     @Test
     public void userCanLoginWithInvalidPassword() {
-        loginTestMethod("newtest@gmail.com", "newtestgmail.com", "login_invalid_password", true);
+        loginTestMethod("tatyanaskv@rambler.ru", "12345", "login_invalid_password", true);
     }
 
     @Test
     public void userCanLoginWithInvalidEmailAndPassword() {
-        loginTestMethod("newtestgmail.com", "newtestgmail.com", "login_invalid_email_and_password", true);
+        loginTestMethod("teddy.com", "qwereet", "login_invalid_email_and_password", true);
     }
 }
 

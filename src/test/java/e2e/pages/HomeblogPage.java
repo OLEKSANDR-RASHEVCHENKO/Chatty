@@ -120,6 +120,10 @@ public class HomeblogPage extends BasePage {
         logo.click();
     }
 
+    public void takeScreenshotHeader(){
+        takeAndCompareScreenshot("header", logo);
+    }
+
 
 
 
