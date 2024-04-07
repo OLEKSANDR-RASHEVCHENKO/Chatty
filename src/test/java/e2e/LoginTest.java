@@ -62,7 +62,7 @@ public class LoginTest extends BaseTest{
 
     @Test
     public void userCanLoginWithValidData() {
-        loginTestMethod("newtest@gmail.com", "newtest@gmail.com", null, false);
+        loginTestMethod("tatyanaskv@rambler.ru", "123456Start", null, false);
     }
 
     @Test
