@@ -26,15 +26,13 @@ public class LoginPage extends BasePage{
         getWait().forVisibility(passwordInput);
         getWait().forVisibility(loginButton);
 }
-public void takeLoginPageScreenShot(String actualScreenShotName){
-        takeAndCompareScreenshot(actualScreenShotName, null );
-}
 
-@Step("Login as a user: {email}, {password}")
+    @Step("Login as a user: {email}, {password}")
     public void login(String email, String password){
         emailInput.sendKeys(email);
         passwordInput.sendKeys(password);
         loginButton.click();
 }
+
 
 }

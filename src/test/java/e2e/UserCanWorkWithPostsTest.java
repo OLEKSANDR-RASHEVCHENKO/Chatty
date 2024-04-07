@@ -7,7 +7,7 @@ import e2e.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CreateTest extends BaseTest {
+public class UserCanWorkWithPostsTest extends BaseTest {
     LoginPage loginPage;
     HomeblogPage homeblogPage;
     EditDeletePostPage editDeletePostPage;
@@ -37,7 +37,6 @@ public class CreateTest extends BaseTest {
         homeblogPage.waitForLoading();
         homeblogPage.openCreatePostPage();
 
-
         homeblogPage.waitForLoading();
         homeblogPage.setTitleInput(title);
         homeblogPage.setDescriptionInput(description);
@@ -59,7 +58,6 @@ public class CreateTest extends BaseTest {
         editDeletePostPage.editPost(editTitle, editDescription, editTextarea, editImage);
         editDeletePostPage.waitForLoading();
 
-
         homeblogPage = new HomeblogPage(app.driver);
         homeblogPage.waitForLoading();
         homeblogPage.clickLogo();
@@ -74,7 +72,7 @@ public class CreateTest extends BaseTest {
         homeblogPage.waitForLoading();
         homeblogPage.clickMyPostsButton();
         homeblogPage.waitForLoading();
-        //Assert.assertFalse(homeblogPage.);
+        //Assert.assertFalse(homeblogPage.che);
 
     }
 

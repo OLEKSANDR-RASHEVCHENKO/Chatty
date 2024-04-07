@@ -61,20 +61,13 @@ public class HomeblogPage extends BasePage {
     @FindBy(xpath = "//*[@data-test='submit']")
     WebElement submitButton;
 
+    @FindBy(xpath = "//*[@class='dropdown-menu']")
+    WebElement dropdownMenu;
+
     @Step("Wait for loading homeblog page")
     public void waitForLoading() {
         getWait().forVisibility(logo);
-        //getWait().forVisibility(myDraftsButton);
-        //getWait().forVisibility(myPostsButton);
-        //getWait().forVisibility(titleInput);
-        //getWait().forVisibility(descriptionInput);
-        //getWait().forVisibility(textareaInput);
-        //getWait().forVisibility(imageInput);
-        //getWait().forVisibility(publishDateButton);
-        //getWait().forVisibility(draftButton);
-        //getWait().forClickable(submitButton);
     }
-
     @Step("Open create post page")
     public void openCreatePostPage() {
         getWait().forVisibility(plusButton);
@@ -122,7 +115,6 @@ public class HomeblogPage extends BasePage {
         WebElement createdPost = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='" + title +"']"));
         createdPost.click();
     }
-
     @Step("Go on homeblog page")
     public void clickLogo(){
         logo.click();
@@ -169,7 +161,7 @@ public class HomeblogPage extends BasePage {
 
 
 //    public boolean checkIfPostDeleted(String title){
-//        LWebElement post = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='" + title +"']"));
+//        WebElement post = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='" + title +"']"));
 //        return !post.isEmpty();
 //    }
 //public void getImage(String imageInput){
