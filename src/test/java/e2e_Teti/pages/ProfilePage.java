@@ -57,6 +57,11 @@ public class ProfilePage extends BasePage{
     @FindBy(xpath = "//*[@data-test='profileSaveButton']")
     WebElement profileSaveButton;
 
+    @FindBy(xpath = "//*[@alt='Logo']")
+    WebElement header;
+
+
+
     @Step("Wait for loading edit page")
     public void waitForLoading() {
         getWait().forVisibility(editProfileButton);
@@ -107,6 +112,11 @@ public class ProfilePage extends BasePage{
     public String getProfileName(String name){
         String editedName = driver.findElement(By.xpath("//*[@placeholder=Name']='" + name +"']")).getText();
         return editedName;
+    }
+
+    @Step("Go to homePage")
+    public void goToHomePage(){
+        header.click();
     }
 
 }

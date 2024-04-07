@@ -39,8 +39,11 @@ public class UserCanWorkWithProfileTest extends BaseTest {
         profilePage = new ProfilePage(app.driver);
         profilePage.openEditProfilePage();
         profilePage.editProfile(editName, editSurname, editBirthday, editPhone, editGender, password, newPassword, newPassword );
-        String edited = profilePage.getProfileName(editName);
-        Assert.assertEquals(edited, editName);
+        profilePage.goToHomePage();
+
+        homeblogPage.waitForLoading();
+        String nameOnHomepage = homeblogPage.getUserNameFromHomePage();
+        Assert.assertEquals(nameOnHomepage, editName);
 
         adminPanel = new AdminPanel(app.driver);
         adminPanel.openAdminPanel();

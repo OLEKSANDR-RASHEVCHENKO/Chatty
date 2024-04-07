@@ -59,6 +59,9 @@ public class HomeblogPage extends BasePage {
     @FindBy(xpath = "//*[@class='dropdown-menu']")
     WebElement dropdownMenu;
 
+    @FindBy(xpath = "//*[@class='sidebar__section']//p")
+    WebElement nameUnderImage;
+
     @Step("Wait for loading homeblog page")
     public void waitForLoading() {
         getWait().forVisibility(logo);
@@ -117,6 +120,11 @@ public class HomeblogPage extends BasePage {
 
     public void takeScreenshotHeader(){
         takeAndCompareScreenshot("header", logo);
+    }
+
+    public String getUserNameFromHomePage(){
+        String userNameUnderImage = nameUnderImage.getText();
+        return  userNameUnderImage;
     }
 
 

@@ -25,7 +25,7 @@ public class AdminPanel extends BasePage{
     @Step("Open admin panel ")
     public void openAdminPanel(){
         headerUserMenu.click();
-        WebElement adminPanel = driver.findElement(By.xpath("//*[@href='/users']"));
+        WebElement adminPanel = driver.findElement(By.xpath("//*[@class='dropdown-menu']//a[contains(text(),'Admin Panel')]"));
         adminPanel.click();
         getWait().forVisibility(searchEmailInput);
     }
