@@ -11,6 +11,11 @@
             </class>
             <class name="e2e.test.AdminCanDeleteUserTest">
             </class>
+            <class name="e2e.test.UserCanCreateEditDeletePostTest">
+            </class>
+            <class name="e2e.test.UserCanNotCreatePostWithInvalidData">
+            </class>
+
         </classes>
     </test>
 </suite>
