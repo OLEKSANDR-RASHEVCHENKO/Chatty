@@ -39,9 +39,9 @@ test {
 }
 
 
-task loginTest(type: Test) {
+task smokeTests(type: Test) {
     useTestNG() {
-        suites 'src/test/resources/TestLogin.xml'
+        suites 'src/test/resources/SmokeTests.xml'
     }
     testLogging {
         events "passed", "skipped", "failed", "standardOut", "standardError"
