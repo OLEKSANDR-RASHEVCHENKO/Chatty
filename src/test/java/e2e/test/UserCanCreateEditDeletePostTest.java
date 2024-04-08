@@ -20,7 +20,7 @@ public class UserCanCreateEditDeletePostTest extends TestBase {
     @Story(value = "User can create post and edit then and delete then")
     @Description(value = "Checking on the process of creating deleting adn editing posts")
     @Severity(SeverityLevel.BLOCKER)
-    @Test(description = "User can create delete and edit post")
+    @Test(description = "User can create delete and edit post4")
     public void user() throws InterruptedException {
         String email = "chipsa15@gmail.com";
         String password = "Gazmanov1234";

@@ -5,6 +5,16 @@
         <classes>
             <class name="e2e.test.UserCanLoginTest">
             </class>
+            <class name="e2e.test.AdminCanDeleteUserTest">
+            </class>
+            <class name="e2e.test.UserCanCreateEditDeletePostTest">
+            </class>
+            <class name="e2e.test.UserCanNotCreatePostWithInvalidData">
+            </class>
+            <class name="e2e.test.UserCanSendFeedbackTest">
+            </class>
+            <class name="e2e.test.UserCanEditProfileTest">
+            </class>
         </classes>
     </test>
 </suite>

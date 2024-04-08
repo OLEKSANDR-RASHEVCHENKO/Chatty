@@ -20,10 +20,11 @@ public class AdminCanDeleteUserTest extends TestBase {
     @Severity(SeverityLevel.MINOR)
     @Test(description = "Admin can delete user")
     public void adminCanDeleteUser(){
-        String email = "rashfeffdcfdd@gmail.com";
+        faker = new Faker();
+        String email =  faker.name().firstName().toLowerCase() + "@gmail.com";
         String password = "Gazmanov1234";
         String confirmPassword = "Gazmanov1234";
-        String emailAsAdmin = "rasehfffcfdfdAdmin@gmail.com";
+        String emailAsAdmin = faker.name().firstName().toLowerCase() + "@gmail.com";
         String passwordAsAdmin = "Gazmanov1234";
         String confirmPasswordAsAdmin = "Gazmanov1234";
         loginPage=new LoginPage(app.driver);
