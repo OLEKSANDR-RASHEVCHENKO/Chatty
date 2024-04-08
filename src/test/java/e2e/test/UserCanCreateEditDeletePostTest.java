@@ -28,12 +28,12 @@ public class UserCanCreateEditDeletePostTest extends TestBase {
         String title = faker.name().firstName();
         String description = faker.book().title();
         String textArea = faker.lorem().paragraph();
-        String filePath = "C:\\Users\\Oleksandr\\IdeaProjects\\Chatty\\src\\test\\java\\Photo\\447238255 (1).jpg";
+        String filePath = "";
         String data = "28.03.2025";
         String editedTitle = faker.name().firstName();
         String editedDescription = faker.book().title();
         String editedTextArea = faker.lorem().paragraph();
-        String editedFilePath = "C:\\Users\\Oleksandr\\IdeaProjects\\Chatty\\src\\test\\java\\Photo\\th.jpg";
+        String editedFilePath = "";
 
         loginPage = new LoginPage(app.driver);
         loginPage.loginInSystem(email, password);
