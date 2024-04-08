@@ -23,7 +23,7 @@ public void createPostMethod(String title,String description,String textArea,boo
     String email = "chipsa15@gmail.com";
     String password = "Gazmanov1234";
     faker = new Faker();
-    String filePath = "photo/333.png";
+    String filePath = "C:\\Users\\Oleksandr\\IdeaProjects\\Chatty\\src\\test\\java\\photo\\th.jpg";
     String data = "28.03.2025";
 
     loginPage = new LoginPage(app.driver);
