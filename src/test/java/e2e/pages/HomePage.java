@@ -9,7 +9,7 @@ import org.testng.Assert;
 
 import java.util.List;
 
-public class HomePage extends BasePage{
+public class HomePage<Header_menu> extends BasePage{
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -55,9 +55,10 @@ public class HomePage extends BasePage{
     WebElement titleErrorMassage;
     @FindBy(xpath = "//p[@class='error' and text()='Please fill all fields'][last()]")
     WebElement errorMassage;
-
     @FindBy(xpath = "//*[@href='/contact']")
     WebElement contactUsButton;
+    @FindBy(xpath = "//*[@class='contact-box']")
+    WebElement contactBox;
 
     public void titleError(){
         getWait().forVisibility(titleErrorMassage);
@@ -133,6 +134,7 @@ public class HomePage extends BasePage{
         getWait().forVisibility(myDraftsButton);
         getWait().forVisibility(createPostButton);
         getWait().forVisibility(newsFeedButton);
+        getWait().forVisibility(contactUsButton);
         Assert.assertTrue(header.isDisplayed());
         Assert.assertTrue(userImage.isDisplayed());
     }
@@ -157,7 +159,10 @@ public class HomePage extends BasePage{
 
     public void clickContact(){
         contactUsButton.click();
+        getWait().forVisibility(contactBox);
     }
+
+
 }
 
 

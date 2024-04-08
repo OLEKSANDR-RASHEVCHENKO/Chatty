@@ -10,7 +10,7 @@ public class UserCanSendFeedback extends BaseTest{
     LoginPage loginPage;
     HomePage homePage;
     ContactPage contactPage;
-    private void feedbackTestMethod(String email,String password,String name ,String emailForSend,String description,String screenshotName,boolean negativeCase){
+    private void feedbackTestMethod(String email,String password,String name ,String emailForSend,String description,boolean negativeCase){
         loginPage=new LoginPage(app.driver);
         loginPage.waitForVisibility();
         loginPage.loginInSystem(email,password);
@@ -21,7 +21,7 @@ public class UserCanSendFeedback extends BaseTest{
         contactPage.waitForLoading();
         contactPage.sendFeedback(name,emailForSend,description);
         if (negativeCase){
-            contactPage.waitForInvalidMassage();
+            contactPage.waitForInvalidMessage();
         }else {
             contactPage.waitForSuccessfullyMessage();
         }
@@ -34,6 +34,6 @@ public class UserCanSendFeedback extends BaseTest{
     @Severity(SeverityLevel.NORMAL)
     @Test(description = "User can send feedback")
     public void userCanSendFeedback(){
-        feedbackTestMethod("alexberr9501@gmail.com","123qwert","Alex","alexberr9501@gmail.com","Hello I'm Alex",null,false);
+        feedbackTestMethod("alexberr9501@gmail.com","123qwert","Alex","alexberr9501@gmail.com","Hello I'm Alex",false);
     }
 }

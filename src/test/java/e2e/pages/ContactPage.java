@@ -40,7 +40,7 @@ public class ContactPage extends BasePage{
         messageInput.sendKeys(message);
         sendMessageButton.click();
     }
-    public void waitForInvalidMassage(){
+    public void waitForInvalidMessage(){
         getWait().forVisibility(invalidEmail);
         Assert.assertTrue(invalidEmail.isDisplayed());
     }

@@ -26,7 +26,7 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//*[@data-test='submit']")
     WebElement loginButton;
     @FindBy(xpath = "//*[@class='text-error']")
-    WebElement errorMassage;
+    WebElement errorMessage;
     @Step("Wait for loading login page")
     public void waitForVisibility(){
         getWait().forVisibility(loginHeader);
@@ -42,7 +42,7 @@ public class LoginPage extends BasePage {
     }
     @Step("Wait for loading error massage")
     public void waitForErrorMassage(){
-        getWait().forVisibility(errorMassage);
+        getWait().forVisibility(errorMessage);
     }
     public void elementIsNotClickable(){
         getWait().forInClickable(loginButton);
