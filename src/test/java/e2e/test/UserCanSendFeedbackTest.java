@@ -43,7 +43,7 @@ public class UserCanSendFeedbackTest extends TestBase {
     @Severity(SeverityLevel.NORMAL)
     @Test(description = "User can  not send feedback")
     public void userCanNotSendFeedbackWithInvalidEmail(){
-        feedbackTestMethod("chipsa14@gmail.com","Gazmanov1234","Alex","chipsa14","Hallo I'am Alex",null,true);
+        feedbackTestMethod("chipsa14@gmail.com","Gazmanov1234","Alex","chipsa","Hallo I'am Alex",null,true);
     }
 
 }
