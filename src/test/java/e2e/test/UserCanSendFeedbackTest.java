@@ -27,7 +27,6 @@ public class UserCanSendFeedbackTest extends TestBase {
             contactPage.waiteForSuccessfullyMassage();
         }
     }
-    @Epic(value = "User can send feedback")
     @Feature(value= "User send feedback")
     @Story(value = "User can sending feedback")
     @Description(value = "User can send feedback")
@@ -36,7 +35,6 @@ public class UserCanSendFeedbackTest extends TestBase {
     public void userCanSendFeedback(){
         feedbackTestMethod("chipsa14@gmail.com","Gazmanov1234","Alex","chipsa14@gmail.com","Hallo I'am Alex",null,false);
     }
-    @Epic(value = "User can  not send feedback")
     @Feature(value= "User  can cot send feedback")
     @Story(value = "User can  not sending of feedback")
     @Description(value = "User can not send feedback")

@@ -25,7 +25,6 @@ public class UserCanLoginTest extends TestBase {
             homePage.waiteForVisibility();
         }
     }
-    @Epic(value = "Login")
     @Feature(value= "User login")
     @Story(value = "User can login with role user")
     @Description(value = "User can login")

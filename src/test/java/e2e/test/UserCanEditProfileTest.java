@@ -15,13 +15,13 @@ public class UserCanEditProfileTest extends TestBase {
     HomePage homePage;
     YourProfilePage yourProfilePage;
     Faker faker;
-    @Epic(value = "Edit profile")
-    @Feature(value= "User can edite profile")
+
+    @Feature(value = "User can edite profile")
     @Story(value = "User can edit profile ")
     @Description(value = "User can edite profile")
     @Severity(SeverityLevel.MINOR)
     @Test(description = "User can edit profile")
-    public void user(){
+    public void user() {
         String email = "chipsa15@gmail.com";
         String password = "Gazmanov1234";
         faker = new Faker();
@@ -37,10 +37,10 @@ public class UserCanEditProfileTest extends TestBase {
         homePage.clickOnOneFromDropDownMenu(DropDownMenu.Your_Profile);
         yourProfilePage = new YourProfilePage(app.driver);
         yourProfilePage.waitForLoading();
-        yourProfilePage.updateUserProfile(name,surname,birthDate,phone);
+        yourProfilePage.updateUserProfile(name, surname, birthDate, phone);
         yourProfilePage.goToHomePage();
         homePage.waiteForVisibility();
-        String userNameOnHomePage=homePage.getUserNameFromHomePage();
-        Assert.assertEquals(userNameOnHomePage,name);
+        String userNameOnHomePage = homePage.getUserNameFromHomePage();
+        Assert.assertEquals(userNameOnHomePage, name);
     }
 }

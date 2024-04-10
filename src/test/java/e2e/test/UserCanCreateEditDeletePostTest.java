@@ -4,7 +4,6 @@ import com.github.javafaker.Faker;
 import e2e.pages.HomePage;
 import e2e.pages.LoginPage;
 import e2e.pages.PostPage;
-import e2e.test.TestBase;
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -15,25 +14,24 @@ public class UserCanCreateEditDeletePostTest extends TestBase {
     PostPage postPage;
     Faker faker;
 
-    @Epic(value = "User can create ,edit,delete post")
-    @Feature(value= "User can create post then edit then delete")
+    @Feature(value = "User can create post then edit then delete")
     @Story(value = "User can create post and edit then and delete then")
     @Description(value = "Checking on the process of creating deleting adn editing posts")
     @Severity(SeverityLevel.BLOCKER)
     @Test(description = "User can create delete and edit post4")
-    public void user() throws InterruptedException {
+    public void userCanCreateEditDeletePostTest() {
         String email = "chipsa15@gmail.com";
         String password = "Gazmanov1234";
         faker = new Faker();
         String title = faker.name().firstName();
         String description = faker.book().title();
         String textArea = faker.lorem().paragraph();
-        String dogPhotoUserCanCreateEditeDeletePost = "C:\\Users\\Oleksandr\\IdeaProjects\\Chatty\\src\\test\\java\\photo\\447238255 (1).jpg";
+        String dogPhotoUserCanCreateEditeDeletePost = "C:\\Users\\Oleksandr\\IdeaProjects\\Chatty\\src\\test\\java\\photo\\userCanCreateEditDeletePostTest_Dog.jpg";
         String data = "28.03.2025";
         String editedTitle = faker.name().firstName();
         String editedDescription = faker.book().title();
         String editedTextArea = faker.lorem().paragraph();
-        String editedDogUserCanCreateEditDeletePost = "C:\\Users\\Oleksandr\\IdeaProjects\\Chatty\\src\\test\\java\\photo\\th.jpg";
+        String editedDogUserCanCreateEditDeletePost = "C:\\Users\\Oleksandr\\IdeaProjects\\Chatty\\src\\test\\java\\photo\\userCanCreateEditDeletePostTest_Dog_Litle.jpg";
 
         loginPage = new LoginPage(app.driver);
         loginPage.loginInSystem(email, password);

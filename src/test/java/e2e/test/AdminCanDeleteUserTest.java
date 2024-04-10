@@ -13,36 +13,35 @@ public class AdminCanDeleteUserTest extends TestBase {
     AdminPanel adminPanel;
     PostPage postPage;
     Faker faker;
-    @Epic(value = "Admin can delete user")
-    @Feature(value= "Deleting users as Admin")
+
+    @Feature(value = "Deleting users as Admin")
     @Story(value = "Admin can delete user with role admin")
     @Description(value = "Admin can delete user")
     @Severity(SeverityLevel.MINOR)
     @Test(description = "Admin can delete user")
-    public void adminCanDeleteUser(){
+    public void adminCanDeleteUser() {
         faker = new Faker();
-        String email =  faker.name().firstName().toLowerCase() + "@gmail.com";
+        String email = faker.name().firstName().toLowerCase() + "@gmail.com";
         String password = "Gazmanov1234";
         String confirmPassword = "Gazmanov1234";
         String emailAsAdmin = faker.name().firstName().toLowerCase() + "@gmail.com";
         String passwordAsAdmin = "Gazmanov1234";
         String confirmPasswordAsAdmin = "Gazmanov1234";
-        loginPage=new LoginPage(app.driver);
+        loginPage = new LoginPage(app.driver);
         loginPage.waitForVisibility();
         loginPage.clickToRegistration();
         registrationPage = new RegistrationPage(app.driver);
         registrationPage.waiteForLoading();
-        registrationPage.registrationAsUser(email,password,confirmPassword);
+        registrationPage.registrationAsUser(email, password, confirmPassword);
         homePage = new HomePage(app.driver);
         homePage.waiteForVisibility();
         homePage.hoverOverElement(app.driver);
         homePage.clickOnOneFromDropDownMenu(DropDownMenu.Logout);
 
-
         loginPage.waitForVisibility();
         loginPage.clickToRegistration();
         registrationPage.waiteForLoading();
-        registrationPage.registrationAsAdmin(emailAsAdmin,passwordAsAdmin,confirmPasswordAsAdmin);
+        registrationPage.registrationAsAdmin(emailAsAdmin, passwordAsAdmin, confirmPasswordAsAdmin);
         homePage.waiteForVisibility();
         homePage.hoverOverElement(app.driver);
         homePage.clickOnOneFromDropDownMenu(DropDownMenu.AdminPanel);
@@ -52,6 +51,5 @@ public class AdminCanDeleteUserTest extends TestBase {
         adminPanel.waitForUser();
         adminPanel.deleteUser();
         adminPanel.userIsNotVisible();
-
     }
 }
