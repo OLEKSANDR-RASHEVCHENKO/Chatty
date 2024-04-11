@@ -1,15 +1,19 @@
 package e2e.pages;
 
+import e2e.enums.DropDownMenu;
+import e2e.enums.Header_menu;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
 import java.util.List;
 
-public class HomePage<Header_menu> extends BasePage{
+public class HomePage extends BasePage{
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -161,6 +165,25 @@ public class HomePage<Header_menu> extends BasePage{
         contactUsButton.click();
         getWait().forVisibility(contactBox);
     }
+
+    public void clickOnOneFromHeaderMenu(Header_menu headerMenu){
+        WebElement clickOnOneFromHeaderMenu = driver.findElement(By.xpath(headerMenu.getListOfHeader()));
+        clickOnOneFromHeaderMenu.click();
+    }
+    public void clickOnOneFromDropDownMenu(DropDownMenu dropDownMenu){
+        WebElement clickOnOneFromDropDownMenu = driver.findElement(By.xpath(dropDownMenu.getListOfDropDownMenu()));
+        clickOnOneFromDropDownMenu.click();
+    }
+    public void hoverOverElement(WebDriver driver){
+        WebElement elementToHover = driver.findElement(By.xpath("//p[contains(text(), 'Hello,')]"));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(elementToHover).perform();
+    }
+    public void scrollToBottom() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    }
+
 
 
 }
