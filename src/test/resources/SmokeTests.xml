@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="SmokeTest" verbose="1">
+    <test name="SmokeTests">
+        <classes>
+            <class name="e2e.test.UserCanEditProfileTest">
+            </class>
+            <class name="e2e.test.UserCanSendFeedbackTest">
+            </class>
+            <class name="e2e.test.UserCanLoginTest">
+            </class>
+            <class name="e2e.test.AdminCanDeleteUserTest">
+            </class>
+            <class name="e2e.test.UserCanCreateEditDeletePostTest">
+            </class>
+
+        </classes>
+    </test>
+</suite>
