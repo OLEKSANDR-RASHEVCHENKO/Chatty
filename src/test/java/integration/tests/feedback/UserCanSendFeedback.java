@@ -13,11 +13,11 @@ public class UserCanSendFeedback {
 
     @Epic(value = "Send Feedback")
     @Feature(value = "Sending Feedback")
-    @Story(value = "User can send Feedback with role admin")
+    @Story(value = "User can send Feedback with role user")
     @Description(value = "User can send Feedback")
     @Severity(SeverityLevel.TRIVIAL)
     @Test(description = "User can send Feedback")
-    public void userCanUpdatePost() throws JsonProcessingException {
+    public void userCanSendFeedback() throws JsonProcessingException {
         String email = "alexberr9501@gmail.com";
         String password = "123qwert";
         String name = "Alex";
@@ -32,5 +32,29 @@ public class UserCanSendFeedback {
 
         feedback = new Feedback(token);
         feedback.sendFeedback(feedbackReq, 201);
+    }
+
+    @Epic(value = "Send Feedback")
+    @Feature(value = "Sending Feedback")
+    @Story(value = "User can't send Feedback with role user")
+    @Description(value = "User can't send Feedback")
+    @Severity(SeverityLevel.TRIVIAL)
+    @Test(description = "User can't send Feedback")
+    public void userCanNotSendFeedback() throws JsonProcessingException {
+        String email = "alexberr9501@gmail.com";
+        String password = "123qwert";
+        String emailField = "alexberr9501gmail.com";
+        String name = "Qa";
+        String content = "invalid data";
+        authApi = new AuthApi();
+        String token = authApi.login(email, password, 200);
+
+        FeedbackReq feedbackReq = new FeedbackReq();
+        feedbackReq.setName(name);
+        feedbackReq.setEmail(emailField);
+        feedbackReq.setContent(content);
+
+        feedback = new Feedback(token);
+        feedback.sendFeedback(feedbackReq, 400);
     }
 }

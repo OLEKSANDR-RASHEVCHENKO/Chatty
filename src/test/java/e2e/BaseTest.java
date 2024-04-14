@@ -1,5 +1,6 @@
 package e2e;
 
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -10,8 +11,9 @@ public class BaseTest {
     public void setupTest() {
         app.init();
     }
+
     @AfterMethod
-    public void tearDown() {
-        app.stop();
+    public void tearDown(ITestResult result) {
+        app.stop(result.isSuccess());
     }
 }

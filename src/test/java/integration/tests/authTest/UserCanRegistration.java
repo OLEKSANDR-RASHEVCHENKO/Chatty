@@ -17,8 +17,8 @@ public class UserCanRegistration {
     @Test(description = "User Can registration")
     public void userCanRegistrationAsUser() {
         String email = faker.internet().emailAddress();
-        String password = "Gazmanov1234";
-        String confirmPassword = "Gazmanov1234";
+        String password = "123qwert";
+        String confirmPassword = "123qwert";
         String role = "user";
         authApi = new AuthApi();
         authApi.registration(email, password, confirmPassword, role, 201);
