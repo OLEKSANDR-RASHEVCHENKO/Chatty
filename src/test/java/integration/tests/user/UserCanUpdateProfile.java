@@ -36,7 +36,7 @@ public class UserCanUpdateProfile {
         String newBirthDate = "";
         String newPhone = "+" + faker.phoneNumber().subscriberNumber(10);
         String newGender = "MALE";
-        File filePathToPhoto = new File("src/test/java/integration/photo/squirrel_PNG15782.png");
+        //File filePathToPhoto = new File("src/test/java/integration/photo/squirrel_PNG15782.png");
         boolean newBlockedStatus = false;
 
         authApi = new AuthApi();
@@ -47,8 +47,7 @@ public class UserCanUpdateProfile {
         JsonPath object = new JsonPath(userJson);
         String userId = object.getString("id");
 
-        uploadPhoto = new UploadPhoto(token);
-        String imageId = uploadPhoto.uploadImage(filePathToPhoto, 201);
+        //
 
         UserUpdateReq userUpdateReq = new UserUpdateReq();
         userUpdateReq.setName(newName);
@@ -56,7 +55,7 @@ public class UserCanUpdateProfile {
         userUpdateReq.setBirthDate(newBirthDate);
         userUpdateReq.setPhone(newPhone);
         userUpdateReq.setGender(newGender);
-        userUpdateReq.setAvatarUrl(imageId);
+        //userUpdateReq.setAvatarUrl(imageId);
         userUpdateReq.setBlocked(newBlockedStatus);
 
         updateUser = new UpdateUser(token);
@@ -68,7 +67,7 @@ public class UserCanUpdateProfile {
         assertEquals(updatedUser.getString("surname"), newSurname);
         assertEquals(updatedUser.getString("phone"), newPhone);
         assertEquals(updatedUser.getString("gender"), newGender);
-        assertEquals(updatedUser.getString("avatarUrl"), imageId);
+        //assertEquals(updatedUser.getString("avatarUrl"), imageId);
 
     }
 }

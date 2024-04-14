@@ -5,10 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-public class ContactPage extends BasePage{
+public class ContactPage extends BasePage {
     public ContactPage(WebDriver driver) {
         super(driver);
     }
+
     @FindBy(xpath = "//*[@class='contact-box']//h1")
     WebElement header;
     @FindBy(xpath = "//*[@href='/contact']")
@@ -26,25 +27,27 @@ public class ContactPage extends BasePage{
     @FindBy(xpath = "//*[@class='success-message']")
     WebElement successfullyMessage;
 
-    public void waitForLoading(){
+    public void waitForLoading() {
         getWait().forVisibility(header);
         getWait().forVisibility(nameInput);
         getWait().forVisibility(emailInput);
         getWait().forVisibility(messageInput);
-        getWait().forVisibility(sendMessageButton);}
+        getWait().forVisibility(sendMessageButton);
+    }
 
-
-    public void sendFeedback(String name, String email,String message){
+    public void sendFeedback(String name, String email, String message) {
         nameInput.sendKeys(name);
         emailInput.sendKeys(email);
         messageInput.sendKeys(message);
         sendMessageButton.click();
     }
-    public void waitForInvalidMessage(){
+
+    public void waitForInvalidMessage() {
         getWait().forVisibility(invalidEmail);
         Assert.assertTrue(invalidEmail.isDisplayed());
     }
-    public void waitForSuccessfullyMessage(){
+
+    public void waitForSuccessfullyMessage() {
         getWait().forVisibility(successfullyMessage);
         Assert.assertTrue(successfullyMessage.isDisplayed());
     }
