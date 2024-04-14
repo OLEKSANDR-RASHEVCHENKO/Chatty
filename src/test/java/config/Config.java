@@ -29,7 +29,9 @@ public class Config {
         return properties.getProperty("selenoid.url");
     }
 
-    public Boolean getHeadless(){return Boolean.parseBoolean(properties.getProperty("headless.state"))};
+    public Boolean getHeadless() {
+        return Boolean.parseBoolean(properties.getProperty("headless.state"));
+    }
 
     public Boolean getSelenoidState() {
         return Boolean.parseBoolean(properties.getProperty("selenoid.state"));
