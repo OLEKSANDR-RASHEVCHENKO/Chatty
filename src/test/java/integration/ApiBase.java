@@ -11,7 +11,7 @@ import java.io.File;
 
 public class ApiBase {
     private final Config config = new Config();
-    protected final String BASE_URL = "http://chatty.telran-edu.de:8089/";
+    protected final String BASE_URL = config.getApiProjectUrl();
     protected final RequestSpecification spec;
 
     public ApiBase() {
