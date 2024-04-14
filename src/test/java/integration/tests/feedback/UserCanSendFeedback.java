@@ -18,10 +18,10 @@ public class UserCanSendFeedback {
     @Severity(SeverityLevel.TRIVIAL)
     @Test(description = "User can send Feedback")
     public void userCanUpdatePost() throws JsonProcessingException {
-        String email = "alexberr9501f@gmail.com";
+        String email = "alexberr9501@gmail.com";
         String password = "123qwert";
         String name = "Alex";
-        String content = "hallo";
+        String content = "Hello Qa";
         authApi = new AuthApi();
         String token = authApi.login(email, password, 200);
 
