@@ -17,8 +17,8 @@ public class UserCanLogin {
     @Severity(SeverityLevel.BLOCKER)
     @Test(description = "User Can Login")
     public void userCanLoginWithValidData() {
-        String email = "rashevc88495f@gmail.com";
-        String password = "Gazmanov1234";
+        String email = "alexberr9501@gmail.com";
+        String password = "123qwert";
         authApi = new AuthApi();
         String token = authApi.login(email, password, 200);
         getUser = new GetUser(token);
