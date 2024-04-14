@@ -19,7 +19,6 @@ public class ApiBase {
                 .setBaseUri(BASE_URL)
                 .setContentType(ContentType.JSON)
                 .build();
-
     }
 
     public ApiBase(String token) {

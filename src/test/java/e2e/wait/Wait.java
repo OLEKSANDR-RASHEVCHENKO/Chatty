@@ -61,9 +61,9 @@ public class Wait {
         }
     }
 
-    public void forAttributeNotEmpty(WebElement element) {
+    public void forAttributeNotEmpty(WebElement element, String attribute) {
         try {
-            setWait().until(ExpectedConditions.attributeToBeNotEmpty(element, "value"));
+            setWait().until(ExpectedConditions.attributeToBeNotEmpty(element, attribute));
         } catch (TimeoutException e) {
             throw new TimeoutException(element.getAccessibleName() + " attribute is empty after " + TIMEOUT.toString());
         }
