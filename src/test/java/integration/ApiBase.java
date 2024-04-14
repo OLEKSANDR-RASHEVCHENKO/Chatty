@@ -10,7 +10,7 @@ import io.restassured.specification.RequestSpecification;
 public class ApiBase {
 
     private final Config config = new Config();
-    final String BASE_URI = config.getProjectUrl();
+    final String BASE_URI = config.getApiProjectUrl();
     private final RequestSpecification spec;
 
     public ApiBase() {
