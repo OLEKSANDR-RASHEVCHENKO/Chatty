@@ -25,7 +25,7 @@ public class ApiBase {
         this.spec = new RequestSpecBuilder()
                 .setBaseUri(BASE_URL)
                 .setContentType(ContentType.JSON)
-                .addHeader("Authorization", "Bearer " + token) // Используем токен в заголовке Authorization
+                .addHeader("Authorization", "Bearer " + token)
                 .build();
     }
 
@@ -43,7 +43,6 @@ public class ApiBase {
                 .response();
         return response;
     }
-
 
     protected Response getRequest(String endpoint, int code) {
         Response response = RestAssured.given()

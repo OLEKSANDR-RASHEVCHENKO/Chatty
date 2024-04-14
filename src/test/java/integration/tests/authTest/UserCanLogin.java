@@ -1,4 +1,4 @@
-package integration.tests.authTests;
+package integration.tests.authTest;
 
 import integration.authApi.AuthApi;
 import integration.user.GetUser;
