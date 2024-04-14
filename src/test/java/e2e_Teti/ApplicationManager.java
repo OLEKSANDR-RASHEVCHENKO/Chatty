@@ -1,23 +1,51 @@
 package e2e_Teti;
 
+import config.Config;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.time.Duration;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ApplicationManager {
+    private final Config config = new Config();
     public WebDriver driver;
 
-    protected void init(){
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.get("http://chatty.telran-edu.de:8089/");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    protected void init() {
+        if (config.getSelenoidState()) {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setBrowserName("chrome");
+            capabilities.setVersion("120.0");
+            Map<String, Object> selenoidOptions = new HashMap<>();
+            selenoidOptions.put("enableVNC", false);
+
+            capabilities.setCapability("selenoid:options", selenoidOptions);
+            try {
+                driver = new RemoteWebDriver(
+                        URI.create(config.getSelenoidUrl()).toURL(),
+                        capabilities
+                );
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+
+
+        } else {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+        }
+        driver.get(config.getProjectUrl());
+        driver.manage().window().setSize(new Dimension(config.getWindowWeight(), config.getWindowHeight()));
 
     }
-    protected void stop(){
+
+    protected void stop() {
         driver.quit();
     }
 }
