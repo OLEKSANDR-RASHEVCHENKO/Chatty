@@ -47,8 +47,6 @@ public class UserCanUpdateProfile {
         JsonPath object = new JsonPath(userJson);
         String userId = object.getString("id");
 
-        //
-
         UserUpdateReq userUpdateReq = new UserUpdateReq();
         userUpdateReq.setName(newName);
         userUpdateReq.setSurname(newSurname);

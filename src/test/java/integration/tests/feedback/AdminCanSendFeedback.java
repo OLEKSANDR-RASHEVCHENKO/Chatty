@@ -13,11 +13,11 @@ public class AdminCanSendFeedback {
 
     @Epic(value = "Send Feedback")
     @Feature(value = "Sending Feedback")
-    @Story(value = "User can send Feedback with role admin")
-    @Description(value = "User can send Feedback")
+    @Story(value = "Admin can send Feedback with role admin")
+    @Description(value = "Admin can send Feedback")
     @Severity(SeverityLevel.TRIVIAL)
-    @Test(description = "User can send Feedback")
-    public void userCanUpdatePost() throws JsonProcessingException {
+    @Test(description = "Admin can send Feedback")
+    public void adminCanUpdatePost() throws JsonProcessingException {
         String email = "alewwx@gmail.com";
         String password = "Gazmanov1234";
         String name = "Alex";

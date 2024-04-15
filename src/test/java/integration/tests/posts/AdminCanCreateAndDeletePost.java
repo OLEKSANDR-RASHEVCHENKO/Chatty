@@ -26,10 +26,10 @@ public class AdminCanCreateAndDeletePost {
 
     @Epic(value = "Create post")
     @Feature(value = "Creating post")
-    @Story(value = "User can create post with role admin")
-    @Description(value = "User can create post")
+    @Story(value = "Admin can create post with role admin")
+    @Description(value = "Admin can create post")
     @Severity(SeverityLevel.BLOCKER)
-    @Test(description = "User Can create post")
+    @Test(description = "Admin can create post")
     public void adminCanCreatePost() throws JsonProcessingException {
         String email = "alewwx@gmail.com";
         String password = "Gazmanov1234";
