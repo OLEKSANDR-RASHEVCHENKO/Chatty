@@ -7,26 +7,44 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-public class ApiBase {
+import java.io.File;
 
+public class ApiBase {
     private final Config config = new Config();
-    final String BASE_URI = config.getApiProjectUrl();
-    private final RequestSpecification spec;
+    protected final String BASE_URL = config.getProjectUrl();
+    protected final RequestSpecification spec;
 
     public ApiBase() {
         this.spec = new RequestSpecBuilder()
-                .setBaseUri(BASE_URI)
+                .setBaseUri(BASE_URL)
                 .setContentType(ContentType.JSON)
                 .build();
+
     }
 
     public ApiBase(String token) {
         this.spec = new RequestSpecBuilder()
-                .setBaseUri(BASE_URI)
+                .setBaseUri(BASE_URL)
                 .setContentType(ContentType.JSON)
-                .addHeader("Authorization", "Bearer " + token)
+                .addHeader("Authorization", "Bearer " + token) // Используем токен в заголовке Authorization
                 .build();
     }
+
+    public Response getAllPosts(int skip, int limit, int expectedStatusCode, String endpoint) {
+        Response response = RestAssured.given()
+                .spec(spec)
+                .queryParam("skip", skip)
+                .queryParam("limit", limit)
+                .when()
+                .log().all()
+                .get(endpoint)
+                .then().log().all()
+                .statusCode(expectedStatusCode)
+                .extract()
+                .response();
+        return response;
+    }
+
 
     protected Response getRequest(String endpoint, int code) {
         Response response = RestAssured.given()
@@ -40,7 +58,7 @@ public class ApiBase {
         return response;
     }
 
-    protected Response getRequestWithParam(String endpoint, int code, String paramName, int paramValue) {
+    protected Response getRequestWhitParam(String endpoint, int code, String paramName, int paramValue) {
         Response response = RestAssured.given()
                 .spec(spec)
                 .when()
@@ -53,7 +71,7 @@ public class ApiBase {
         return response;
     }
 
-    protected Response getRequestWithParamString(String endpoint, int code, String paramName, String paramValue) {
+    protected Response getRequestWhitParamString(String endpoint, int code, String paramName, String paramValue) {
         Response response = RestAssured.given()
                 .spec(spec)
                 .when()
@@ -92,15 +110,30 @@ public class ApiBase {
         return response;
     }
 
-    protected Response deleteRequest(String endpoint, int code, int id) {
+    protected Response deleteRequest(String endpoint, int code) {
         Response response = RestAssured.given()
                 .spec(spec)
                 .when()
-                .pathParam("id", id)
                 .log().all()
                 .delete(endpoint)
                 .then().log().all()
                 .extract().response();
+        response.then().assertThat().statusCode(code);
+        return response;
+    }
+
+    public Response uploadImageRequest(String endpoint, File imageFile, int code) {
+        Response response = RestAssured.given()
+                .spec(spec)
+                .contentType("multipart/form-data")
+                .multiPart("multipartFile", imageFile, "image/png")
+                .when()
+                .post(endpoint)
+                .then().log().all()
+                .statusCode(code)
+                .extract()
+                .response();
+
         response.then().assertThat().statusCode(code);
         return response;
     }
