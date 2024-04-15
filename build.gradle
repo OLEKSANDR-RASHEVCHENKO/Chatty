@@ -27,21 +27,32 @@ dependencies {
 
 test {
     useTestNG()
-    retry{
+    retry {
         maxRetries = 3
     }
 
     testLogging {
-        events "passed","skipped","failed","standardOut","standardError"
+        events "passed", "skipped", "failed", "standardOut", "standardError"
         exceptionFormat "full"
     }
-    systemProperty'allure.result.directory','build/allure-results'
+    systemProperty 'allure.result.directory', 'build/allure-results'
 }
 
 
-task smokeTests(type: Test) {
+task smokeTestsApiAdminAction(type: Test) {
     useTestNG() {
-        suites 'src/test/resources/SmokeTests.xml'
+        suites 'src/test/resources/ApiSmokeTestsAdminAction.xml'
+    }
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+        exceptionFormat "full"
+    }
+    systemProperty 'allure.result.directory', 'build/allure-results'
+}
+
+task smokeTestsApiUserAction(type: Test) {
+    useTestNG() {
+        suites 'src/test/resources/ApiSmokeTestsUserAction.xml'
     }
     testLogging {
         events "passed", "skipped", "failed", "standardOut", "standardError"

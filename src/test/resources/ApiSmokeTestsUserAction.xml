@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="SmokeTest" verbose="1">
+    <test name="SmokeTests">
+        <classes>
+            <class name="integration.tests.authTests.UserCanRegistration">
+            </class>
+            <class name="integration.tests.authTests.UserCanLogin">
+            </class>
+            <class name="integration.tests.user.UserCanUpdateProfile">
+            </class>
+            <class name="integration.tests.user.UserCanNotGetAllUsers">
+            </class>
+            <class name="integration.tests.feedback.UserCanSendFeedback">
+            </class>
+            <class name="integration.tests.posts.UserCanCreateAndDeletePost">
+            </class>
+
+        </classes>
+    </test>
+</suite>
