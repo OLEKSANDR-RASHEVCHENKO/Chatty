@@ -13,9 +13,7 @@ public class UploadPhoto extends ApiBase {
 
     public String uploadImage(File imageFile, int expectedStatusCode) {
         String endPoint = "/api/images";
-
         Response response = uploadImageRequest(endPoint, imageFile, expectedStatusCode);
-
         if (response.statusCode() == expectedStatusCode) {
             return response.jsonPath().getString("imageUrl");
         } else {

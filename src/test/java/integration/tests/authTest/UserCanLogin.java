@@ -15,7 +15,7 @@ public class UserCanLogin {
     @Story(value = "User can login with role user")
     @Description(value = "User can login")
     @Severity(SeverityLevel.BLOCKER)
-    @Test(description = "User Can Login")
+    @Test(description = "User Can Login with valid data")
     public void userCanLoginWithValidData() {
         String email = "alexberr9501@gmail.com";
         String password = "123qwert";
@@ -28,7 +28,12 @@ public class UserCanLogin {
         System.out.println(userId);
     }
 
-    @Test
+    @Epic(value = "Login")
+    @Feature(value = "User can't login")
+    @Story(value = "User can login with role user")
+    @Description(value = "User can't  login")
+    @Severity(SeverityLevel.BLOCKER)
+    @Test(description = "user can't Login with Invalid Email")
     public void userCanNotLoginWithInvalidEmail() {
         String email = "alexberr95@gmail.com";
         String password = "123qwert";
@@ -38,7 +43,12 @@ public class UserCanLogin {
         getUser.getUser(401);
     }
 
-    @Test
+    @Epic(value = "Login")
+    @Feature(value = "User can't login")
+    @Story(value = "User can login with role user")
+    @Description(value = "User can't login")
+    @Severity(SeverityLevel.BLOCKER)
+    @Test(description = "user can't Login with Invalid Password")
     public void userCanNotLoginWithInvalidPassword() {
         String email = "alexberr9501@gmail.com";
         String password = "123qwerty";
