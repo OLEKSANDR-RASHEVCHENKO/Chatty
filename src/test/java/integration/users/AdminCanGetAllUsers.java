@@ -11,8 +11,8 @@ public class AdminCanGetAllUsers {
 
     @Test
     public void adminCanGetAllUsers() throws JsonProcessingException {
-        String email = "alewwx@gmail.com";
-        String password = "Gazmanov1234";
+        String email = "teti@gmail.com";
+        String password = "qwerty123";
         loginUser = new LoginUser();
         String token = loginUser.login(email, password, 200);
         getAllUsersAsAdmin = new GetAllUsersAsAdmin(token);

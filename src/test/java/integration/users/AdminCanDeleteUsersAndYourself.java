@@ -21,14 +21,13 @@ public class AdminCanDeleteUsersAndYourself {
 
     public void adminCanDeleteUsersAndYourself() {
         String userEmail = faker.internet().emailAddress();
-        String userPassword = "Gazmanov1234";
-        String confirmUserPassword = "Gazmanov1234";
+        String userPassword = "qwerty123";
+        String confirmUserPassword = "qwerty123";
         String role = "user";
 
         String adminEmail = faker.internet().emailAddress();
-        ;
-        String adminPassword = "Gazmanov1234";
-        String confirmAdminPassword = "Gazmanov1234";
+        String adminPassword = "qwerty123";
+        String confirmAdminPassword = "qwerty123";
         String adminRole = "admin";
         registrationUser = new RegistrationUser();
         registrationUser.registration(userEmail, userPassword, confirmUserPassword, role, 201);

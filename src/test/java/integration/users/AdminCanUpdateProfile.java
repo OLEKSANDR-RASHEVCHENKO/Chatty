@@ -32,8 +32,8 @@ public class AdminCanUpdateProfile {
     @Test(description = "User can update profile")
     public void adminCanRegistrationAsUserWithValidData() throws JsonProcessingException {
         String email = faker.internet().emailAddress();
-        String password = "Gazmanov1234";
-        String confirmPassword = "Gazmanov1234";
+        String password = "qwerty123";
+        String confirmPassword = "qwerty123";
         String role = "admin";
         String newName = faker.name().firstName();
         String newSurname = faker.name().lastName();

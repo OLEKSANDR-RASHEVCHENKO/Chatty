@@ -31,8 +31,8 @@ public class UserCanUpdateProfile {
     @Severity(SeverityLevel.MINOR)
     @Test(description = "User can update profile")
     public void userCanUpdateProfile() throws JsonProcessingException {
-        String email = "rashevc88495f@gmail.com";
-        String password = "Gazmanov1234";
+        String email = "tatyanaskv12@rambler.ru";
+        String password = "123456Start";
         String newName = faker.name().firstName();
         String newSurname = faker.name().lastName();
         String newBirthDate = "";
