@@ -5,7 +5,6 @@ import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -26,23 +25,6 @@ public class BasePage {
         return new Wait(driver);
     }
 
-    public Select getSelect(WebElement element) {
-        return new Select(element);
-    }
-
-    protected boolean isElementDisplayed(WebElement element) {
-        try {
-            return element.isDisplayed();
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
-
-    protected void setInput(WebElement input, String value) {
-        input.click();
-        input.clear();
-        input.sendKeys(value);
-    }
 
     private File takeScreenshot(WebElement element) {
         File tmp;
