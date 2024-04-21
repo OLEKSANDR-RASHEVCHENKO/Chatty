@@ -57,5 +57,4 @@ public class UserCanLogin {
         getUser = new GetUser(token);
         getUser.getUser(401);
     }
-
 }
