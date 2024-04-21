@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 public class UserCanNotCreatePostWithInvalidData extends TestBase {
     LoginPage loginPage;
     HomePage homePage;
-    PostPage postPage;
     Faker faker;
 
     @Feature(value = "User can not create post")

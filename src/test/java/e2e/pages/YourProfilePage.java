@@ -6,10 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-public class YourProfilePage extends BasePage{
+public class YourProfilePage extends BasePage {
     public YourProfilePage(WebDriver driver) {
         super(driver);
     }
+
     @FindBy(xpath = "//*[@alt='Logo']")
     WebElement header;
     @FindBy(xpath = "//*[@data-test='userProfileForm']")
@@ -32,15 +33,17 @@ public class YourProfilePage extends BasePage{
     WebElement changePassword;
     @FindBy(xpath = "//*[@data-test='profileSaveButton']")
     WebElement saveButton;
+
     @Step("Wait for loading yourProfilePage")
-    public void waitForLoading(){
+    public void waitForLoading() {
         getWait().forVisibility(userProfileForm);
         getWait().forVisibility(editButton);
         Assert.assertTrue(userProfileForm.isDisplayed());
         Assert.assertTrue(editButton.isDisplayed());
     }
+
     @Step("Update user profile:{name},{surname},{birthdate},{phone}")
-    public void updateUserProfile(String name,String surname,String birthdate,String phone){
+    public void updateUserProfile(String name, String surname, String birthdate, String phone) {
         editButton.click();
         nameInput.clear();
         nameInput.sendKeys(name);
@@ -53,16 +56,11 @@ public class YourProfilePage extends BasePage{
         phoneInput.sendKeys(phone);
         saveButton.click();
     }
-    @Step("Check if updated name displayed on Home Page")
-    public void elementIsDisabled(){
-        boolean isPhoneInputDisabled = phoneInput.getAttribute("disabled") != null;
-        Assert.assertFalse(isPhoneInputDisabled);
-    }
+
     @Step("Go to homePage")
-    public void goToHomePage(){
+    public void goToHomePage() {
         header.click();
     }
-
 
 
 }
