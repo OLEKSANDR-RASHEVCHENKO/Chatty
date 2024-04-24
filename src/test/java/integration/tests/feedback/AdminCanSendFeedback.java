@@ -21,7 +21,7 @@ public class AdminCanSendFeedback {
         String email = "alewwx@gmail.com";
         String password = "Gazmanov1234";
         String name = "Alex";
-        String content = "hallo";
+        String content = "Qa test";
         authApi = new AuthApi();
         String token = authApi.login(email, password, 200);
 
