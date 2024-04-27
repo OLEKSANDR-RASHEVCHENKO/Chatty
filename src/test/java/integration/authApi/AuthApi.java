@@ -1,10 +1,10 @@
 package integration.authApi;
 
 import integration.ApiBase;
+import integration.schemas.LoginReq;
+import integration.schemas.RegisterReq;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-
-import java.util.LinkedHashMap;
 
 public class AuthApi extends ApiBase {
     Response response;
@@ -12,12 +12,7 @@ public class AuthApi extends ApiBase {
     @Step("Registration user")
     public String registration(String email, String password, String confirmPassword, String role, int expectedStatusCode) {
         String endPoint = "/api/auth/register";
-        LinkedHashMap<String, String> body = new LinkedHashMap<>();
-        body.put("email", email);
-        body.put("password", password);
-        body.put("confirmPassword", confirmPassword);
-        body.put("role", role);
-
+        Object body = registrationDataInput(email, password, confirmPassword, role);
         Response response = postRequest(endPoint, expectedStatusCode, body);
         int statusCode = response.statusCode();
 
@@ -29,13 +24,26 @@ public class AuthApi extends ApiBase {
         }
     }
 
+    public RegisterReq registrationDataInput(String email, String password, String confirmPassword, String role) {
+        RegisterReq registerReq = new RegisterReq();
+        registerReq.setEmail(email);
+        registerReq.setPassword(password);
+        registerReq.setConfirmPassword(confirmPassword);
+        registerReq.setRole(role);
+        return registerReq;
+    }
+
+    public LoginReq loginIntoSystem(String email, String password) {
+        LoginReq loginReq = new LoginReq();
+        loginReq.setEmail(email);
+        loginReq.setPassword(password);
+        return loginReq;
+    }
+
     @Step("Login by Email and Password : {email},{password}")
     public String login(String email, String password, int expectedStatusCode) {
         String endPoint = "/api/auth/login";
-        LinkedHashMap<String, String> body = new LinkedHashMap<>();
-        body.put("email", email);
-        body.put("password", password);
-
+        Object body = loginIntoSystem(email, password);
         response = postRequest(endPoint, expectedStatusCode, body);
         int statusCode = response.statusCode();
 

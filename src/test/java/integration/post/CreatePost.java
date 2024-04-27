@@ -1,7 +1,6 @@
 package integration.post;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import integration.ApiBase;
 import integration.schemas.PostCreateReq;
 import io.qameta.allure.Step;
@@ -13,11 +12,10 @@ public class CreatePost extends ApiBase {
     }
 
     @Step("Create post")
-    public String createPost(PostCreateReq postCreateReq, int expectedStatusCode) throws JsonProcessingException {
+    public String createPost(String title, String description, String bodyReq, String imageUrl, String publishDate, boolean draft, int expectedStatusCode) throws JsonProcessingException {
         String endpoint = "/api/posts";
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonRequestBody = objectMapper.writeValueAsString(postCreateReq);
-        Response response = postRequest(endpoint, expectedStatusCode, jsonRequestBody);
+        Object body = postCreating(title, description, bodyReq, imageUrl, publishDate, draft);
+        Response response = postRequest(endpoint, expectedStatusCode, body);
         switch (response.getStatusCode()) {
             case 201:
                 return response.asString();
@@ -30,5 +28,16 @@ public class CreatePost extends ApiBase {
             default:
                 return "Unexpected status code: " + response.getStatusCode() + ". Response: " + response.asString();
         }
+    }
+
+    public PostCreateReq postCreating(String title, String description, String body, String imageUrl, String publishDate, boolean draft) {
+        PostCreateReq postCreateReq = new PostCreateReq();
+        postCreateReq.setTitle(title);
+        postCreateReq.setDescription(description);
+        postCreateReq.setBody(body);
+        postCreateReq.setImageUrl(imageUrl);
+        postCreateReq.setPublishDate(publishDate);
+        postCreateReq.setDraft(draft);
+        return postCreateReq;
     }
 }

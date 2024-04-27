@@ -1,7 +1,6 @@
 package integration.post;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import integration.ApiBase;
 import integration.schemas.UpdatePostReq;
 import io.qameta.allure.Step;
@@ -13,11 +12,10 @@ public class UpdatePost extends ApiBase {
     }
 
     @Step("Update post by postID: {0}")
-    public String updatePost(String postId, UpdatePostReq updatePostReq, int expectedStatusCode) throws JsonProcessingException {
+    public String updatePost(String title, String description, String bodyPost, String imageUrl, String draft, String postId, int expectedStatusCode) throws JsonProcessingException {
         String endpoint = "/api/posts/" + postId;
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonRequestBody = objectMapper.writeValueAsString(updatePostReq);
-        Response response = putRequest(endpoint, expectedStatusCode, jsonRequestBody);
+        Object body = updatingPosts(title, description, bodyPost, imageUrl, draft);
+        Response response = putRequest(endpoint, expectedStatusCode, body);
         switch (response.getStatusCode()) {
             case 200:
                 return response.asString();
@@ -28,6 +26,16 @@ public class UpdatePost extends ApiBase {
             default:
                 return "Unexpected status code: " + response.getStatusCode() + " - " + response.asString();
         }
+    }
+
+    public UpdatePostReq updatingPosts(String title, String description, String body, String imageUrl, String draft) {
+        UpdatePostReq updatePostReq = new UpdatePostReq();
+        updatePostReq.setTitle(title);
+        updatePostReq.setDescription(description);
+        updatePostReq.setBody(body);
+        updatePostReq.setImageUrl(imageUrl);
+        updatePostReq.setDraft(draft);
+        return updatePostReq;
     }
 }
 
