@@ -3,7 +3,6 @@ package integration.tests.admin;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.javafaker.Faker;
 import integration.authApi.AuthApi;
-import integration.schemas.UserUpdateReq;
 import integration.uploadPhoto.UploadPhoto;
 import integration.user.GetUser;
 import integration.user.UpdateUser;
@@ -54,14 +53,6 @@ public class AdminCanUpdateProfile {
         uploadPhoto = new UploadPhoto(token);
         String imageId = uploadPhoto.uploadImage(filePathToPhoto, 201);
 
-        UserUpdateReq userUpdateReq = new UserUpdateReq();
-        userUpdateReq.setName(newName);
-        userUpdateReq.setSurname(newSurname);
-        userUpdateReq.setBirthDate(newBirthDate);
-        userUpdateReq.setPhone(newPhone);
-        userUpdateReq.setGender(newGender);
-        userUpdateReq.setAvatarUrl(imageId);
-        userUpdateReq.setBlocked(newBlockedStatus);
 
         updateUser = new UpdateUser(token);
         updateUser.updateUser(imageId, newName, newSurname, newBirthDate, newPhone, newGender, bac, newBlockedStatus, userId, 200);
