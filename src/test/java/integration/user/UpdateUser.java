@@ -2,7 +2,6 @@ package integration.user;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import integration.ApiBase;
 import integration.schemas.UserUpdateReq;
 import io.qameta.allure.Step;
@@ -17,12 +16,11 @@ public class UpdateUser extends ApiBase {
     }
 
     @Step("Update user with ID {0}")
-    public String updateUser(String userId, UserUpdateReq userUpdateReq, int expectedStatusCode) throws JsonProcessingException {
+    public String updateUser(String avatar, String name, String surname, String birth, String phone, String gender, String back, boolean blocked, String userId, int expectedStatusCode) throws JsonProcessingException {
         String endpoint = "/api/users/" + userId;
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonRequest = objectMapper.writeValueAsString(userUpdateReq);
+        Object body = userUpdateReq(avatar, name, surname, birth, phone, gender, back, blocked);
 
-        Response response = putRequest(endpoint, expectedStatusCode, jsonRequest);
+        Response response = putRequest(endpoint, expectedStatusCode, body);
 
 
         if (response.getStatusCode() == 200) {
@@ -45,5 +43,18 @@ public class UpdateUser extends ApiBase {
             default:
                 return "Unexpected status code: " + response.getStatusCode() + ". Message: " + response.asString();
         }
+    }
+
+    public UserUpdateReq userUpdateReq(String avatar, String name, String surname, String birth, String phone, String gender, String back, boolean blocked) {
+        UserUpdateReq userUpdateReq = new UserUpdateReq();
+        userUpdateReq.setAvatarUrl(avatar);
+        userUpdateReq.setName(name);
+        userUpdateReq.setSurname(surname);
+        userUpdateReq.setBirthDate(birth);
+        userUpdateReq.setPhone(phone);
+        userUpdateReq.setGender(gender);
+        userUpdateReq.setBackgroundUrl(back);
+        userUpdateReq.setBlocked(blocked);
+        return userUpdateReq;
     }
 }

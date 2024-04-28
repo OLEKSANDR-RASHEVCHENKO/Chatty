@@ -5,7 +5,6 @@ import integration.authApi.AuthApi;
 import integration.post.CreatePost;
 import integration.post.DeletePost;
 import integration.post.GetPostByPostId;
-import integration.schemas.PostCreateReq;
 import integration.uploadPhoto.UploadPhoto;
 import integration.user.GetUser;
 import io.qameta.allure.*;
@@ -37,6 +36,8 @@ public class UserCanCreateAndDeletePost {
         String title = "hallo world";
         String description = "djfjdfj";
         String body = "djfjdjfjd";
+        boolean draft = false;
+        String publishData = "";
 
         authApi = new AuthApi();
         String token = authApi.login(email, password, 200);
@@ -50,20 +51,13 @@ public class UserCanCreateAndDeletePost {
         String imageURL = uploadPhoto.uploadImage(filePath, 201);
         System.out.println(imageURL);
 
-        PostCreateReq postCreateReq = new PostCreateReq();
-        postCreateReq.setTitle(title);
-        postCreateReq.setDescription(description);
-        postCreateReq.setBody(body);
-        postCreateReq.setImageUrl(imageURL);
-
         createPost = new CreatePost(token);
-        String response = createPost.createPost(postCreateReq, 201);
+        String response = createPost.createPost(title, description, body, imageURL, publishData, draft, 201);
         JsonPath jsonPath = new JsonPath(response);
         String postId = jsonPath.getString("id");
 
         getPostByPostId = new GetPostByPostId(token);
-        String postResponse = getPostByPostId.getPostByPostId(postId, 200);
-        JsonPath postJson = new JsonPath(postResponse);
+        getPostByPostId.getPostByPostId(postId, 200);
         String postTitle = jsonPath.getString("title");
         String postDescription = jsonPath.getString("description");
         String postBody = jsonPath.getString("body");

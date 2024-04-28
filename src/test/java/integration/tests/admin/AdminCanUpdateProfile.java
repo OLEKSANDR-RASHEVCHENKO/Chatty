@@ -3,7 +3,6 @@ package integration.tests.admin;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.javafaker.Faker;
 import integration.authApi.AuthApi;
-import integration.schemas.UserUpdateReq;
 import integration.uploadPhoto.UploadPhoto;
 import integration.user.GetUser;
 import integration.user.UpdateUser;
@@ -38,6 +37,7 @@ public class AdminCanUpdateProfile {
         String newBirthDate = "";
         String newPhone = "+" + faker.phoneNumber().subscriberNumber(10);
         String newGender = "MALE";
+        String bac = "sssddd";
         File filePathToPhoto = new File("src/test/java/integration/photo/vinni-pukh-v-png.png");
         boolean newBlockedStatus = false;
         authApi = new AuthApi();
@@ -53,17 +53,9 @@ public class AdminCanUpdateProfile {
         uploadPhoto = new UploadPhoto(token);
         String imageId = uploadPhoto.uploadImage(filePathToPhoto, 201);
 
-        UserUpdateReq userUpdateReq = new UserUpdateReq();
-        userUpdateReq.setName(newName);
-        userUpdateReq.setSurname(newSurname);
-        userUpdateReq.setBirthDate(newBirthDate);
-        userUpdateReq.setPhone(newPhone);
-        userUpdateReq.setGender(newGender);
-        userUpdateReq.setAvatarUrl(imageId);
-        userUpdateReq.setBlocked(newBlockedStatus);
 
         updateUser = new UpdateUser(token);
-        updateUser.updateUser(userId, userUpdateReq, 200);
+        updateUser.updateUser(imageId, newName, newSurname, newBirthDate, newPhone, newGender, bac, newBlockedStatus, userId, 200);
         String updatedUserJson = getUser.getUser(200);
         JsonPath updatedUser = new JsonPath(updatedUserJson);
 

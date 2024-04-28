@@ -22,4 +22,5 @@ public class UploadPhoto extends ApiBase {
             return "Failed to upload image: " + errorMessage;
         }
     }
+
 }

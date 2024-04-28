@@ -37,6 +37,7 @@ public class UserCanUpdateProfile {
         String newPhone = "+" + faker.phoneNumber().subscriberNumber(10);
         String newGender = "MALE";
         File filePathToPhoto = new File("src/test/java/integration/photo/squirrel_PNG15782.png");
+        String bac = "fgddf";
         boolean newBlockedStatus = false;
 
         authApi = new AuthApi();
@@ -60,7 +61,7 @@ public class UserCanUpdateProfile {
         userUpdateReq.setBlocked(newBlockedStatus);
 
         updateUser = new UpdateUser(token);
-        updateUser.updateUser(userId, userUpdateReq, 200);
+        updateUser.updateUser(imageId, newName, newSurname, newBirthDate, newPhone, newGender, bac, newBlockedStatus, userId, 200);
         String updatedUserJson = getUser.getUser(200);
         JsonPath updatedUser = new JsonPath(updatedUserJson);
 

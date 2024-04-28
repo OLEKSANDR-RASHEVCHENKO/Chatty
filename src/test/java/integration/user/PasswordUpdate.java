@@ -1,7 +1,5 @@
 package integration.user;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import integration.ApiBase;
 import integration.schemas.PasswordReq;
 import io.qameta.allure.Step;
@@ -14,11 +12,10 @@ public class PasswordUpdate extends ApiBase {
 
     @Step("Change password for user ID: {0}")
 
-    public String changePassword(String userId, PasswordReq passwordReq, int expectedStatusCode) throws JsonProcessingException {
+    public String changePassword(String current, String newPassword, String confirmPassword, int expectedStatusCode) {
         String endpoint = "/api/user/password/update";
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonRequest = objectMapper.writeValueAsString(passwordReq);
-        Response response = putRequest(endpoint, expectedStatusCode, jsonRequest);
+        Object body = passwordReq(current, newPassword, confirmPassword);
+        Response response = putRequest(endpoint, expectedStatusCode, body);
 
         switch (response.getStatusCode()) {
             case 200:
@@ -31,5 +28,13 @@ public class PasswordUpdate extends ApiBase {
                 return "Unexpected status code: " + response.getStatusCode() + " - " + response.asString();
         }
 
+    }
+
+    public PasswordReq passwordReq(String current, String newPassword, String confirmPassword) {
+        PasswordReq passwordReq = new PasswordReq();
+        passwordReq.setCurrentPassword(current);
+        passwordReq.setNewPassword(newPassword);
+        passwordReq.setConfirmPassword(confirmPassword);
+        return passwordReq;
     }
 }
