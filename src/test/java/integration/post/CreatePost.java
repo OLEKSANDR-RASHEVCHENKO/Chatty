@@ -1,6 +1,5 @@
 package integration.post;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import integration.ApiBase;
 import integration.schemas.PostCreateReq;
 import io.qameta.allure.Step;
@@ -12,7 +11,7 @@ public class CreatePost extends ApiBase {
     }
 
     @Step("Create post")
-    public String createPost(String title, String description, String bodyReq, String imageUrl, String publishDate, boolean draft, int expectedStatusCode) throws JsonProcessingException {
+    public String createPost(String title, String description, String bodyReq, String imageUrl, String publishDate, boolean draft, int expectedStatusCode) {
         String endpoint = "/api/posts";
         Object body = postCreating(title, description, bodyReq, imageUrl, publishDate, draft);
         Response response = postRequest(endpoint, expectedStatusCode, body);

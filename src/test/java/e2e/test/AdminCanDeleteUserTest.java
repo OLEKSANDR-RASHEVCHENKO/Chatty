@@ -2,7 +2,10 @@ package e2e.test;
 
 import com.github.javafaker.Faker;
 import e2e.enums.DropDownMenu;
-import e2e.pages.*;
+import e2e.pages.AdminPanel;
+import e2e.pages.HomePage;
+import e2e.pages.LoginPage;
+import e2e.pages.RegistrationPage;
 import io.qameta.allure.*;
 import org.testng.annotations.Test;
 
@@ -11,7 +14,6 @@ public class AdminCanDeleteUserTest extends TestBase {
     LoginPage loginPage;
     HomePage homePage;
     AdminPanel adminPanel;
-    PostPage postPage;
     Faker faker;
 
     @Feature(value = "Deleting users as Admin")
