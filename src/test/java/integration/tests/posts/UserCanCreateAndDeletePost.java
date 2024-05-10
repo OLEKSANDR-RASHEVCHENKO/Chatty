@@ -49,7 +49,6 @@ public class UserCanCreateAndDeletePost {
 
         uploadPhoto = new UploadPhoto(token);
         String imageURL = uploadPhoto.uploadImage(filePath, 201);
-        System.out.println(imageURL);
 
         createPost = new CreatePost(token);
         String response = createPost.createPost(title, description, body, imageURL, publishData, draft, 201);
