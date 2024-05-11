@@ -31,6 +31,7 @@ public class AdminCanDeleteUserTest extends TestBase {
         String confirmPasswordAsAdmin = "Gazmanov1234";
         loginPage = new LoginPage(app.driver);
         loginPage.waitForVisibility();
+        loginPage.takeHeaderScreenshotOnLoginPage("HeaderOnLoginPage");
         loginPage.clickToRegistration();
         registrationPage = new RegistrationPage(app.driver);
         registrationPage.waiteForLoading();

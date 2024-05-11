@@ -34,6 +34,10 @@ public class YourProfilePage extends BasePage {
     @FindBy(xpath = "//*[@data-test='profileSaveButton']")
     WebElement saveButton;
 
+    public void takeUserProfileFormScreenshotOnYourProfilePage(String actualScreenshotName) {
+        takeAndCompareScreenshot(actualScreenshotName, userProfileForm);
+    }
+
     @Step("Wait for loading yourProfilePage")
     public void waitForLoading() {
         getWait().forVisibility(userProfileForm);

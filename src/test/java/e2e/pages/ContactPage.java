@@ -25,28 +25,33 @@ public class ContactPage extends BasePage {
     WebElement invalidEmail;
     @FindBy(xpath = "//*[@class='success-message']")
     WebElement successfullyMassage;
+
     @Step("Waite for loading Contact page")
-    public void waiteForLoading(){
+    public void waiteForLoading() {
         getWait().forVisibility(header);
         Assert.assertTrue(header.isDisplayed());
     }
+
     @Step("Send Massage:{name},{email},{content}")
-    public void sendMessage(String name,String email,String content){
+    public void sendMessage(String name, String email, String content) {
         nameInput.sendKeys(name);
         emailInput.sendKeys(email);
         contentInput.sendKeys(content);
         sendButton.click();
     }
-    public void takeLoginPageScreenshot(String actualScreenshotName){
-        takeAndCompareScreenshot(actualScreenshotName, null);
+
+    public void takeHeaderScreenshotOnContactPage(String actualScreenshotName) {
+        takeAndCompareScreenshot(actualScreenshotName, header);
     }
+
     @Step("Waite for invalid Massage")
-    public void waiteForInvalidMassage(){
+    public void waiteForInvalidMassage() {
         getWait().forVisibility(invalidEmail);
         Assert.assertTrue(invalidEmail.isDisplayed());
     }
+
     @Step("Wait for successfully Message")
-    public void waiteForSuccessfullyMassage(){
+    public void waiteForSuccessfullyMassage() {
         getWait().forVisibility(successfullyMassage);
         Assert.assertTrue(successfullyMassage.isDisplayed());
     }

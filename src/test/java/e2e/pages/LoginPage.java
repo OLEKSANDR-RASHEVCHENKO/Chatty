@@ -9,6 +9,7 @@ public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
         super(driver);
     }
+
     @FindBy(xpath = "//*[@class='form']")
     WebElement loginHeader;
     @FindBy(xpath = "//*[@class='link']//a")
@@ -27,8 +28,9 @@ public class LoginPage extends BasePage {
     WebElement loginButton;
     @FindBy(xpath = "//*[@class='text-error']")
     WebElement errorMassage;
+
     @Step("Wait for loading login page")
-    public void waitForVisibility(){
+    public void waitForVisibility() {
         getWait().forVisibility(loginHeader);
         getWait().forVisibility(dontHaveAnAccText);
         getWait().forClickable(signUpLink);
@@ -37,24 +39,29 @@ public class LoginPage extends BasePage {
         getWait().forClickable(passwordEye);
         getWait().forVisibility(loginButton);
     }
-    public void clickToRegistration(){
+
+    public void clickToRegistration() {
         registrationLink.click();
     }
+
     @Step("Wait for loading error massage")
-    public void waiteForErrorMassage(){
+    public void waiteForErrorMassage() {
         getWait().forVisibility(errorMassage);
     }
-    public void elementIsNotClickable(){
+
+    public void elementIsNotClickable() {
         getWait().forInClickable(loginButton);
     }
+
     @Step("Login as user:{email},{password}")
-    public void loginInSystem(String email,String password){
+    public void loginInSystem(String email, String password) {
         emailField.sendKeys(email);
         passwordEye.click();
         passwordField.sendKeys(password);
         loginButton.click();
     }
-    public void takeLoginPageScreenshot(String actualScreenshotName){
-        takeAndCompareScreenshot(actualScreenshotName, null);
+
+    public void takeHeaderScreenshotOnLoginPage(String actualScreenshotName) {
+        takeAndCompareScreenshot(actualScreenshotName, loginHeader);
     }
 }

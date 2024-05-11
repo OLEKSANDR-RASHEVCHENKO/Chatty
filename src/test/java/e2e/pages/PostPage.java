@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-public class PostPage extends BasePage{
+public class PostPage extends BasePage {
     public PostPage(WebDriver driver) {
         super(driver);
     }
@@ -37,10 +37,13 @@ public class PostPage extends BasePage{
     @FindBy(xpath = "//*[@id='publishDate']")
     WebElement calendar;
 
+    public void takeHeaderScreenshotOnPostPage(String actualScreenshotName) {
+        takeAndCompareScreenshot(actualScreenshotName, header);
+    }
 
 
     @Step("Wait for Post page")
-    public void waitForLoading(){
+    public void waitForLoading() {
         getWait().forVisibility(post);
         getWait().forVisibility(editButton);
         getWait().forVisibility(deleteButton);
@@ -50,7 +53,7 @@ public class PostPage extends BasePage{
     }
 
     @Step("Update  post:{title},{description},{textArea}")
-    public void editePost(String title,String description,String textArea,String path){
+    public void editePost(String title, String description, String textArea, String path) {
         editButton.click();
         getWait().forVisibility(postDescription);
         titleInput.clear();
@@ -62,19 +65,20 @@ public class PostPage extends BasePage{
         Assert.assertTrue(uploadedImages.isDisplayed());
         submitButton.click();
     }
-@Step("Delete post")
-    public void deletePost(){
+
+    @Step("Delete post")
+    public void deletePost() {
         deleteButton.click();
     }
 
 
-@Step("Upload Photo")
+    @Step("Upload Photo")
     public void uploadPhoto(String filePath) {
         WebElement fileInput = driver.findElement(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
         fileInput.sendKeys(filePath);
     }
 
-    public void clickOnHeader(){
+    public void clickOnHeader() {
         header.click();
     }
 }

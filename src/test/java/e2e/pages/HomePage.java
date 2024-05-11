@@ -13,10 +13,11 @@ import org.testng.Assert;
 
 import java.util.List;
 
-public class HomePage extends BasePage{
+public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {
         super(driver);
     }
+
     @FindBy(xpath = "//*[@data-test='home-blog-component']")
     WebElement postsComponent;
     @FindBy(xpath = "//*[@alt='Logo']")
@@ -65,23 +66,28 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//p[@class='error' and text()='Please fill all fields'][last()]")
     WebElement errorMassage;
 
-    public void titleError(){
+    public void takeHeaderScreenshotOnHomePage(String actualScreenshotName) {
+        takeAndCompareScreenshot(actualScreenshotName, header);
+    }
+
+    public void titleError() {
         getWait().forVisibility(titleErrorMassage);
         Assert.assertTrue(titleErrorMassage.isDisplayed());
     }
-    public void errorMassage(){
+
+    public void errorMassage() {
         getWait().forVisibility(errorMassage);
         Assert.assertTrue(errorMassage.isDisplayed());
     }
 
     @Step("Waite for Post")
-    public void waiteForPosts(){
+    public void waiteForPosts() {
         Assert.assertTrue(postsComponent.isDisplayed());
     }
 
 
     @Step("Load post:{title},{description},{area}")
-    public void loadPost(String title,String description,String area,String filePath,String data){
+    public void loadPost(String title, String description, String area, String filePath, String data) {
         titleInput.sendKeys(title);
         descriptionInput.sendKeys(description);
         textAreaInput.sendKeys(area);
@@ -92,8 +98,9 @@ public class HomePage extends BasePage{
         getWait().forVisibility(calendar);
         submitButton.click();
     }
+
     @Step("Load post as draft:{title},{description},{area}")
-    public void loadPostAsDraft(String title,String description,String area,String filePath,String data){
+    public void loadPostAsDraft(String title, String description, String area, String filePath, String data) {
         titleInput.sendKeys(title);
         descriptionInput.sendKeys(description);
         textAreaInput.sendKeys(area);
@@ -110,32 +117,33 @@ public class HomePage extends BasePage{
         WebElement fileInput = driver.findElement(By.xpath("//*[@accept='image/png,.png,image/jpg,.jpg,image/jpeg,.jpeg']"));
         fileInput.sendKeys(filePath);
     }
+
     @Step("Get title from Post")
-    public String getTitleFromCreatedPost(String titleName){
-        String createdPost = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='"+titleName+"']")).getText();
+    public String getTitleFromCreatedPost(String titleName) {
+        String createdPost = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='" + titleName + "']")).getText();
         return createdPost;
     }
+
     @Step("Click on created Post")
-    public void clickOnCreatedPost(String titleName){
-        WebElement createdPost = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='"+titleName+"']"));
+    public void clickOnCreatedPost(String titleName) {
+        WebElement createdPost = driver.findElement(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='" + titleName + "']"));
         createdPost.click();
     }
-@Step("check if Post was deleted")
-    public boolean isPostPresent(String title){
-        List<WebElement> posts = driver.findElements(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='"+title+"']"));
+
+    @Step("check if Post was deleted")
+    public boolean isPostPresent(String title) {
+        List<WebElement> posts = driver.findElements(By.xpath("//*[@data-test='post']//*[@class='post-content__top']//h3[text()='" + title + "']"));
         return !posts.isEmpty();
     }
 
-@Step("Get user name from Home page")
-    public String getUserNameFromHomePage(){
+    @Step("Get user name from Home page")
+    public String getUserNameFromHomePage() {
         String userNameUnderImage = nameUnderImage.getText();
-        return  userNameUnderImage;
+        return userNameUnderImage;
     }
 
 
-
-
-    public void waiteForVisibility(){
+    public void waiteForVisibility() {
         getWait().forVisibility(header);
         getWait().forVisibility(helloUser);
         getWait().forVisibility(userImage);
@@ -146,38 +154,46 @@ public class HomePage extends BasePage{
         Assert.assertTrue(header.isDisplayed());
         Assert.assertTrue(userImage.isDisplayed());
     }
-    public void switchToMyPosts(){
+
+    public void switchToMyPosts() {
         myPostsCheckBox.click();
         getWait().forVisibility(containerInMyPosts);
     }
-    public void switchToMyPostsWithoutPosts(){
+
+    public void switchToMyPostsWithoutPosts() {
         myPostsCheckBox.click();
         getWait().forVisibility(postsComponent);
     }
-    public void clickOnNewsFeed(){
+
+    public void clickOnNewsFeed() {
         newsFeedButton.click();
 
     }
-    public void clickOnMyDraftsButton(){
+
+    public void clickOnMyDraftsButton() {
         myDraftsButton.click();
     }
-    public void clickOnCreatePost(){
+
+    public void clickOnCreatePost() {
         createPostButton.click();
     }
 
-    public void clickOnOneFromHeaderMenu(Header_menu headerMenu){
+    public void clickOnOneFromHeaderMenu(Header_menu headerMenu) {
         WebElement clickOnOneFromHeaderMenu = driver.findElement(By.xpath(headerMenu.getListOfHeader()));
         clickOnOneFromHeaderMenu.click();
     }
-    public void clickOnOneFromDropDownMenu(DropDownMenu dropDownMenu){
+
+    public void clickOnOneFromDropDownMenu(DropDownMenu dropDownMenu) {
         WebElement clickOnOneFromDropDownMenu = driver.findElement(By.xpath(dropDownMenu.getListOfDropDownMenu()));
         clickOnOneFromDropDownMenu.click();
     }
-    public void hoverOverElement(WebDriver driver){
+
+    public void hoverOverElement(WebDriver driver) {
         WebElement elementToHover = driver.findElement(By.xpath("//p[contains(text(), 'Hello,')]"));
         Actions actions = new Actions(driver);
         actions.moveToElement(elementToHover).perform();
     }
+
     public void scrollToBottom() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");

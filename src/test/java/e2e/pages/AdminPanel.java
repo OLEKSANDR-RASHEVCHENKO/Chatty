@@ -6,10 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-public class AdminPanel extends BasePage{
+public class AdminPanel extends BasePage {
     public AdminPanel(WebDriver driver) {
         super(driver);
     }
+
     @FindBy(xpath = "//*[@data-test='adminPanelTitle']")
     WebElement header;
     @FindBy(xpath = "//*[@data-test='searchEmailInput']")
@@ -22,30 +23,38 @@ public class AdminPanel extends BasePage{
     WebElement deleteButton;
     @FindBy(xpath = "//*[@data-test='userRow']")
     WebElement informationAboutUsers;
+
+    public void takeHeaderScreenshotOnAdminPanel(String actualScreenshotName) {
+        takeAndCompareScreenshot(actualScreenshotName, header);
+    }
+
     @Step("Wait for Loading Admin panel Page")
-    public void waitForLoading(){
+    public void waitForLoading() {
         getWait().forVisibility(header);
         Assert.assertTrue(header.isDisplayed());
     }
+
     @Step("Waite for User")
-    public void waitForUser(){
+    public void waitForUser() {
         getWait().forVisibility(informationAboutUsers);
         Assert.assertTrue(informationAboutUsers.isDisplayed());
     }
+
     @Step("Check that user is not visible")
-    public void userIsNotVisible(){
+    public void userIsNotVisible() {
         getWait().forInvisibility(informationAboutUsers);
     }
+
     @Step("Search user")
-    public void searchUser(String userEmail){
+    public void searchUser(String userEmail) {
         searchInput.sendKeys(userEmail);
         searchButton.click();
     }
+
     @Step("Delete user")
-    public void deleteUser(){
+    public void deleteUser() {
         deleteButton.click();
     }
-
 
 
 }
