@@ -50,7 +50,7 @@ task smokeTestsApiAdminAction(type: Test) {
     systemProperty 'allure.result.directory', 'build/allure-results'
 }
 
-task smokeTestsApiUserAction(type: Test) {
+task smokeTestsUI(type: Test) {
     useTestNG() {
         suites 'src/test/resources/UiSmokeTests.xml'
     }
